@@ -1,0 +1,57 @@
+<main class="container">
+  <div class="panel">
+    <p class="candidate">
+      <span>{{plan.name}}</span>
+      <span>参评人员列表</span>
+    </p>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>姓名</th>
+        <th *ngIf="2 != plan.progressStatus">单位</th>
+        <th *ngIf="2 != plan.progressStatus">部门</th>
+        <th *ngIf="2 == plan.progressStatus">专业知识与技术水平</th>
+        <th *ngIf="2 == plan.progressStatus">工作业绩</th>
+        <th *ngIf="2 == plan.progressStatus">工作能力</th>
+        <th *ngIf="2 == plan.progressStatus">论著与技术总结</th>
+        <th *ngIf="2 == plan.progressStatus">职业道德和工作态度</th>
+        <th *ngIf="2 == plan.progressStatus">总成绩</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let candidate of plan.candidateList">
+        <td>{{candidate.name}}</td>
+        <td *ngIf="2 != plan.progressStatus">{{candidate.organization}}</td>
+        <td *ngIf="2 != plan.progressStatus">{{candidate.department}}</td>
+        <td *ngIf="2 == plan.progressStatus">{{candidate.professionalKnowledgeScore}}</td>
+        <td *ngIf="2 == plan.progressStatus">{{candidate.workPerformanceScore}}</td>
+        <td *ngIf="2 == plan.progressStatus">{{candidate.workAbilityScore}}</td>
+        <td *ngIf="2 == plan.progressStatus">{{candidate.technicalAbilityScore}}</td>
+        <td *ngIf="2 == plan.progressStatus">{{candidate.professionalEthicsScore}}</td>
+        <td *ngIf="2 == plan.progressStatus">{{candidate.totalScore}}</td>
+        <td>
+          <a routerLink="/candidate/{{candidate.id}}/edit">
+            <button class="btn btn-link" type="button">详细信息</button>
+          </a>
+          <button class="btn btn-link" type="button" (click)="modalService.showDeleteEvaluateeModal(candidate)" *ngIf="0 == plan.progressStatus">删除</button>
+          <button class="btn btn-link" type="button" *ngIf="2 == plan.progressStatus" (click)="exportCandidateInfo(candidate.id)">导出</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <section class="btn-group">
+      <a routerLink="/plan/list">
+        <button class="btn btn-primary" type="button">返回</button>
+      </a>
+      <button class="btn btn-primary" type="button" (click)="modalService.showExportEvaluationScoreFormsModal(plan)" *ngIf="2 == plan.progressStatus">导出评审表</button>
+      <a routerLink="/plan/{{plan.id}}/candidate/add" *ngIf="0 == plan.progressStatus">
+        <button class="btn btn-primary" type="button">添加参评人员</button>
+      </a>
+      <button class="btn btn-primary" type="button" (click)="modalService.showAddEvaluateeModal(plan)" *ngIf="0 == plan.progressStatus">导入参评人员</button>
+    </section>
+  </div>
+</main>
+<app-candidate-import-modal (emitter)="getNewCandidates($event)"></app-candidate-import-modal>
+<app-candidate-delete-modal (emitter)="deleteCandidate($event)"></app-candidate-delete-modal>
+<app-vote-export-modal></app-vote-export-modal>

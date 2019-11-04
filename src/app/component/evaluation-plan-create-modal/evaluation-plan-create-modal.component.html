@@ -1,0 +1,32 @@
+<div class="modal" *ngIf="modalService.isCreateEvaluationPlanModalVisible">
+  <dialog class="modal-dialog">
+    <header class="modal-header">
+      <h1 class="modal-title">创建考核评价计划</h1>
+      <div class="modal-dismiss">
+        <span class="icon icon-remove" (click)="modalService.dismissCreateEvaluationPlanModal()"></span>
+      </div>
+    </header>
+    <main class="modal-content">
+      <form class="form-horizontal form-horizontal-2">
+        <div class="form-group">
+          <label class="form-label">名称</label>
+          <input #name (input)="plan.name = name.value" class="form-control" type="text"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">类型</label>
+          <input #type (input)="plan.year = year.value" class="form-control" type="text"/>
+        </div>
+      </form>
+    </main>
+    <footer class="modal-footer">
+      <button class="btn btn-default" type="button" (click)="modalService.dismissCreateEvaluationPlanModal()"
+              [disabled]="isBtnDisabled">取消
+      </button>
+      <button class="btn btn-primary" type="button" (click)="saveEvaluationPlan()" [disabled]="isBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isBtnDisabled"></span>
+        <span *ngIf="!isBtnDisabled">保存</span>
+        <span *ngIf="isBtnDisabled">正在保存</span>
+      </button>
+    </footer>
+  </dialog>
+</div>

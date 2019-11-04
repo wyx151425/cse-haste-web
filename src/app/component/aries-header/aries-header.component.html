@@ -1,0 +1,11 @@
+<header class="header" *ngIf="modalService.isHeaderComponentVisible">
+  <div class="header-fixed">
+    <div class="container">
+      <img class="logo" src="../../../assets/images/cse.png" alt=""/>
+      <p class="account">
+        <span class="account-name">{{user.name}}</span>
+        <span class="icon icon-off" (click)="logout()"></span>
+      </p>
+    </div>
+  </div>
+</header>

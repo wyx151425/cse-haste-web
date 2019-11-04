@@ -1,0 +1,22 @@
+<div class="modal" *ngIf="modalService.isStartEvaluationPlanModalVisible">
+  <dialog class="modal-dialog">
+    <header class="modal-header">
+      <h1 class="modal-title">启动考核评价计划</h1>
+      <div class="modal-dismiss"><span class="icon icon-remove"
+                                       (click)="modalService.dismissStartEvaluationPlanModal()"></span></div>
+    </header>
+    <main class="modal-content">
+      <p>您确定要启动{{plan.name}}考核评价计划吗？</p>
+    </main>
+    <footer class="modal-footer">
+      <button class="btn btn-default" type="button" (click)="modalService.dismissStartEvaluationPlanModal()"
+              [disabled]="isBtnDisabled">取消
+      </button>
+      <button class="btn btn-primary" type="button" (click)="startEvaluationPlan()" [disabled]="isBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isBtnDisabled"></span>
+        <span *ngIf="!isBtnDisabled">启动</span>
+        <span *ngIf="isBtnDisabled">正在启动</span>
+      </button>
+    </footer>
+  </dialog>
+</div>

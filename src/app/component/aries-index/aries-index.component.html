@@ -1,0 +1,14 @@
+<main class="container">
+  <div class="panel">
+    <p class="candidate" *ngIf="1 == group.planStatus">
+      <span>专业：{{group.major}}</span>
+      <span>申报职称：{{group.title}}</span>
+    </p>
+    <app-aries-group-candidates *ngIf="1 == group.planStatus" [candidates]="group.candidateList"></app-aries-group-candidates>
+    <section class="btn-group" *ngIf="1 == group.planStatus">
+      <a routerLink="/judge/{{judge.id}}/score/submit">
+        <button class="btn btn-primary" type="button">提交</button>
+      </a>
+    </section>
+  </div>
+</main>

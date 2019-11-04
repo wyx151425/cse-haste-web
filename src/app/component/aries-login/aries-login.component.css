@@ -1,0 +1,125 @@
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.container {
+  width: 450px;
+}
+
+.master {
+  display: flex;
+  align-items: center;
+  width: 450px;
+  height: 54px;
+  margin: 40px 0 30px;
+}
+
+.logo {
+  width: 114px;
+  height: 54px;
+}
+
+.brand {
+  margin-left: 12px;
+}
+
+.company-name {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.app-name {
+  line-height: 18px;
+  margin-top: 4px;
+}
+
+.content {
+  width: 390px;
+  height: auto;
+  padding: 40px 30px;
+  border-radius: 2px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form-inline .form-control {
+  height: 52px;
+  line-height: 52px;
+  padding: 0 52px;
+}
+
+.form-inline .form-label {
+  width: 52px;
+  height: 52px;
+  line-height: 52px;
+}
+
+.form-inline .form-action {
+  width: 52px;
+  height: 52px;
+  line-height: 52px;
+}
+
+.btn-super {
+  width: 100%;
+  height: 52px;
+  font-size: 17px;
+  margin-top: 8px;
+}
+
+.icon-user:before {
+  content: "\e008";
+}
+
+.icon-lock:before {
+  content: "\e033";
+}
+
+.icon-remove-sign:before {
+  content: "\e083";
+}
+
+.icon-eye-open:before {
+  content: "\e105";
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .master, .content {
+    width: 100%;
+    min-width: 350px;
+    box-sizing: border-box;
+  }
+
+  .logo {
+    width: 100px;
+    height: 45px;
+  }
+
+  .brand {
+    margin-left: 8px;
+  }
+
+  .company-name {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .app-name {
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 4px;
+  }
+}

@@ -1,0 +1,28 @@
+<div class="modal" *ngIf="modalService.isExportEvaluationScoreFormsModalVisible">
+  <dialog class="modal-dialog">
+    <header class="modal-header">
+      <h1 class="modal-title">导出评审表决表</h1>
+      <div class="modal-dismiss"><span class="icon icon-remove" (click)="modalService.dismissExportEvaluationScoreFormsModal()"></span>
+      </div>
+    </header>
+    <main class="modal-content">
+      <form class="form-horizontal form-horizontal-2">
+        <label class="form-label">类别</label>
+        <select (change)="selectPosition($event.target.value)" class="form-control">
+          <option selected disabled>请选择</option>
+          <option *ngFor="let position of positions" [value]="position">{{position}}</option>
+        </select>
+      </form>
+    </main>
+    <footer class="modal-footer">
+      <button class="btn btn-default" type="button" (click)="modalService.dismissExportEvaluationScoreFormsModal()"
+              [disabled]="isBtnDisabled">取消
+      </button>
+      <button class="btn btn-primary" type="button" (click)="exportVote()" [disabled]="isBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isBtnDisabled"></span>
+        <span *ngIf="!isBtnDisabled">导出</span>
+        <span *ngIf="isBtnDisabled">正在导出</span>
+      </button>
+    </footer>
+  </dialog>
+</div>

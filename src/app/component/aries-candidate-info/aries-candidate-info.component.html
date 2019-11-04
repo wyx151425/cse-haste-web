@@ -1,0 +1,91 @@
+<main class="container">
+  <div class="panel">
+    <p class="candidate">
+      <span>参评人员：{{candidate.name}}</span>
+    </p>
+    <table class="table table-bordered table-reverse">
+      <tbody>
+      <tr>
+        <td>个人肖像</td>
+        <td><img class="portrait" [src]="candidate.portrait" alt=""/></td>
+      </tr>
+      <tr>
+        <td>姓名</td>
+        <td>{{candidate.name}}</td>
+      </tr>
+      <tr>
+        <td>申请职位</td>
+        <td>{{candidate.electPosition}}</td>
+      </tr>
+      <tr>
+        <td>性别</td>
+        <td>{{candidate.gender}}</td>
+      </tr>
+      <tr>
+        <td>出生年月</td>
+        <td>{{candidate.birthday}}</td>
+      </tr>
+      <tr>
+        <td>学历</td>
+        <td>{{candidate.education}}</td>
+      </tr>
+      <tr>
+        <td>毕业院校</td>
+        <td>{{candidate.university}}</td>
+      </tr>
+      <tr>
+        <td>毕业年度</td>
+        <td>{{candidate.graduationYear}}&nbsp;年</td>
+      </tr>
+      <tr>
+        <td>专业</td>
+        <td>{{candidate.major}}</td>
+      </tr>
+      <tr>
+        <td>学制</td>
+        <td>{{candidate.studyYears}}&nbsp;年</td>
+      </tr>
+      <tr>
+        <td>现从事专业</td>
+        <td>{{candidate.presentOccupation}}</td>
+      </tr>
+      <tr>
+        <td>职业资格</td>
+        <td>{{candidate.qualificationCertificate}}</td>
+      </tr>
+      <tr>
+        <td>现任职务</td>
+        <td>{{candidate.currentJob}}</td>
+      </tr>
+      <tr>
+        <td>授予时间</td>
+        <td>{{candidate.grantingTime}}</td>
+      </tr>
+      <tr>
+        <td>专业技术工作年限</td>
+        <td>{{candidate.workingYears}}&nbsp;年</td>
+      </tr>
+      <tr>
+        <td>科技成果</td>
+        <td>{{candidate.technologicalAchievements}}</td>
+      </tr>
+      <tr>
+        <td>发表的论文</td>
+        <td>{{candidate.papers}}</td>
+      </tr>
+      <tr>
+        <td>获得的荣誉</td>
+        <td>{{candidate.honors}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <section class="btn-group">
+      <a routerLink="/index">
+        <button class="btn btn-primary" type="button">返回</button>
+      </a>
+      <a routerLink="/candidate/{{candidate.id}}/score/edit">
+        <button class="btn btn-primary" type="button">评分</button>
+      </a>
+    </section>
+  </div>
+</main>

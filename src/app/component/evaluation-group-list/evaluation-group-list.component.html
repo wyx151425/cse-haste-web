@@ -1,0 +1,55 @@
+<main class="container">
+  <div class="panel">
+    <p class="candidate">
+      <span>{{evaluationGroup.evaluationPlan.name}}</span>
+      <span>考核评价工作组列表</span>
+    </p>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>名称</th>
+        <th>完成情况</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let evaluationGroup of evaluationGroups">
+        <td>{{evaluationGroup.name}}</td>
+        <td>
+          <span *ngIf="!evaluationGroup.complete">未完成</span>
+          <span *ngIf="evaluationGroup.complete">已完成</span>
+        </td>
+        <td>{{evaluationGroup.title}}</td>
+        <td>
+          <a routerLink="/evaluationGroup/{{evaluationGroup.id}}/evaluatee/list"
+             *ngIf="100 === evaluationGroup.evaluationPlan.stage">
+            <button class="btn btn-link" type="button">管理受评者</button>
+          </a>
+          <a routerLink="/evaluationGroup/{{evaluationGroup.id}}/evaluator/list"
+             *ngIf="100 === evaluationGroup.evaluationPlan.stage">
+            <button class="btn btn-link" type="button">管理评价者</button>
+          </a>
+          <button class="btn btn-link" type="button"
+                  (click)="modalService.showDeleteEvaluationGroupModal(evaluationGroup)"
+                  *ngIf="100 == evaluationGroup.evaluationPlan.stage">删除
+          </button>
+          <a routerLink="/evaluationGroup/{{evaluationGroup.id}}/evaluationScoreForm/list"
+             *ngIf="200 === evaluationGroup.evaluationPlan.stage || 300 === evaluationGroup.evaluationPlan.stage">
+            <button class="btn btn-link" type="button">查看评分</button>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <section class="btn-group">
+      <a routerLink="/plan/list">
+        <button class="btn btn-primary" type="button">返回</button>
+      </a>
+      <button class="btn btn-primary" (click)="modalService.showCreateEvaluationGroupModal(evaluationGroups[0].evaluationPlan)" type="button"
+              *ngIf="0 == plan.progressStatus">添加评分组
+      </button>
+    </section>
+  </div>
+</main>
+<app-evaluation-group-create-modal (emitter)="getNewEvaluationGroup($event)"></app-evaluation-group-create-modal>
+<app-evaluation-group-delete-modal (emitter)="deleteEvaluationGroup($event)"></app-evaluation-group-delete-modal>

@@ -1,0 +1,22 @@
+<div class="modal" *ngIf="modalService.isDeleteEvaluationPlanModalVisible">
+  <dialog class="modal-dialog">
+    <header class="modal-header">
+      <h1 class="modal-title">删除考核评审计划</h1>
+      <div class="modal-dismiss"><span class="icon icon-remove"
+                                       (click)="modalService.dismissDeleteEvaluationPlanModal()"></span></div>
+    </header>
+    <main class="modal-content">
+      <p>您确定要删除{{plan.name}}考核评审计划吗？</p>
+    </main>
+    <footer class="modal-footer">
+      <button class="btn btn-default" type="button" (click)="modalService.dismissDeleteEvaluationPlanModal()"
+              [disabled]="isBtnDisabled">取消
+      </button>
+      <button class="btn btn-primary" type="button" (click)="deleteEvaluationPlan()" [disabled]="isBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isBtnDisabled"></span>
+        <span *ngIf="!isBtnDisabled">删除</span>
+        <span *ngIf="isBtnDisabled">正在删除</span>
+      </button>
+    </footer>
+  </dialog>
+</div>

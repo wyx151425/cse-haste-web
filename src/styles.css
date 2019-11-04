@@ -1,0 +1,760 @@
+@charset "utf-8";
+
+/* 全局CSS */
+html {
+  max-width: 100%;
+  min-width: 320px;
+  height: 100%;
+  background: #F1F2F3;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+body, dialog {
+  color: #303133;
+  font-size: 15px;
+  font-family: "Microsoft Yahei", "微软雅黑", "Hiragino Sans GB", "WenQuanYi Micro Hei", "宋体", "sans-serif";
+}
+
+body, header, footer, main, dialog, section,
+h1, h2, h3, h4, h5, h6, p, ol, ul, li,
+button, input, select, textarea {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+header, footer, main, dialog, section {
+  display: block;
+}
+
+a:link, a:hover, a:active, a:visited {
+  text-decoration-line: none;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header部分CSS */
+.header {
+  width: 100%;
+  height: 64px;
+  margin-bottom: 40px;
+}
+
+.header-fixed {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 64px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header .container {
+  display: flex;
+  height: 64px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: block;
+  width: 108px;
+  height: 48px;
+  object-fit: cover;
+}
+
+.account {
+  height: 64px;
+  line-height: 64px;
+  font-size: 16px;
+}
+
+.account-name {
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.icon-off {
+  cursor: pointer;
+}
+
+/* Footer部分CSS */
+.footer {
+  width: 100%;
+  height: 64px;
+  line-height: 64px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #E4E7ED;
+  border-top: 1px solid #DCDFE6;
+}
+
+/* Container部分CSS */
+main.container {
+  min-height: 720px;
+}
+
+.panel {
+  width: 1200px;
+  min-height: 720px;
+  padding: 40px;
+  box-sizing: border-box;
+  margin-bottom: 80px;
+  border-radius: 2px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.candidate {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 16px;
+  margin-bottom: 8px;
+}
+
+.candidate span {
+  margin-bottom: 8px;
+}
+
+/* Button部分CSS */
+.btn {
+  width: 96px;
+  height: 36px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.btn .icon {
+  margin-right: 6px;
+}
+
+.btn-default {
+  color: #303133;
+  border: 1px solid #DCDFE6;
+  background-color: transparent;
+}
+
+.btn-default:hover {
+  color: #337AB7;
+  border: 1px solid #337AB7;
+}
+
+.btn-default:active {
+  color: #204D74;
+  border: 1px solid #204D74;
+}
+
+.btn-default:disabled {
+  color: #909399;
+  cursor: not-allowed;
+  border-color: #EBEEF5;
+}
+
+.btn-primary {
+  color: #FFFFFF;
+  background-color: #337AB7;
+}
+
+.btn-primary:hover {
+  background-color: #286090;
+}
+
+.btn-primary:active {
+  background-color: #204D74;
+}
+
+.btn-primary:disabled {
+  cursor: not-allowed;
+  background-color: #7BA9D0;
+}
+
+.btn-link {
+  width: auto;
+  height: auto;
+  color: #337AB7;
+  background-color: transparent;
+}
+
+.btn-link:active {
+  color: #204D74;
+}
+
+.btn-group {
+  display: flex;
+  flex-flow: row-reverse;
+  margin-top: 16px;
+}
+
+.btn-group .btn {
+  margin-left: 16px;
+}
+
+/* Table部分CSS */
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 16px;
+  border-collapse: collapse;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  text-align: left;
+  line-height: 24px;
+  padding: 8px 12px;
+  vertical-align: top;
+  border-top: 1px solid #DCDFE6;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+}
+
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #DCDFE6;
+}
+
+.table > tbody > tr > td > .btn, .table > tbody > tr > td > a > .btn {
+  margin-right: 12px;
+}
+
+.table-bordered {
+  border: 2px solid #DCDFE6;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+  border: 1px solid #DCDFE6;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 2px;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #F5F7FA;
+}
+
+.table-reverse > tbody > tr > td:first-of-type {
+  font-weight: 700;
+}
+
+/* Form部分CSS */
+.form-group {
+  margin-bottom: 8px;
+}
+
+.form-label {
+  height: 42px;
+  line-height: 42px;
+  font-weight: 700;
+}
+
+.form-control {
+  height: 42px;
+  line-height: 42px;
+  color: #303133;
+  font-size: 15px;
+  padding: 0 12px;
+  border: 1px solid #DCDFE6;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  border-color: #337AB7;
+}
+
+select.form-control {
+  padding-left: 8px;
+  padding-right: 4px;
+}
+
+textarea.form-control {
+  min-height: 144px;
+  max-height: 204px;
+  line-height: 20px;
+  padding: 12px;
+  font-size: 14px;
+  font-family: "Arial", "Microsoft Yahei", "微软雅黑", "Hiragino Sans GB", "WenQuanYi Micro Hei", "宋体", "sans-serif";
+}
+
+input[type="file"].form-control {
+  font-size: 14px;
+  padding: 8px 12px;
+  line-height: normal;
+}
+
+.form {
+  display: block;
+}
+
+.form .form-label {
+  display: block;
+}
+
+.form .form-control {
+  display: block;
+  width: 100%;
+}
+
+.form textarea.form-control {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.form-horizontal {
+  display: block;
+}
+
+.form-horizontal .form-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-horizontal-2 {
+
+}
+
+.form-horizontal-2 .form-label {
+  width: 30px;
+  margin-right: 12px;
+}
+
+.form-horizontal-2 .form-control {
+  width: 328px;
+}
+
+.form-horizontal-2 textarea.form-control {
+  max-width: 328px;
+  min-width: 328px;
+}
+
+.form-inline {
+  display: block;
+}
+
+.form-inline .form-group {
+  position: relative;
+}
+
+.form-inline .form-control {
+  width: 100%;
+  padding: 0 42px;
+}
+
+.form-inline .form-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  color: #909399;
+  text-align: center;
+}
+
+.form-inline .form-label .icon {
+  top: 3px;
+  left: 2px;
+  font-size: 18px;
+}
+
+.form-inline .form-action {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  color: #909399;
+  text-align: center;
+}
+
+.form-inline .form-action .icon {
+  cursor: pointer;
+}
+
+.form-inline .form-control:focus + .form-label {
+  color: #337AB7;
+}
+
+.checkbox {
+  display: block;
+  width: 16px;
+  height: 16px;
+  padding: 3px;
+  box-sizing: border-box;
+  border: 1px solid #DCDFE6;
+  background-color: #DCDFE6;
+  background-clip: content-box;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked + .checkbox {
+  background-color: #337AB7;
+}
+
+/* Transfer部分CSS */
+.transfer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.transfer-form {
+  width: 300px;
+  min-height: 600px;
+  border: 1px solid #DCDFE6;
+  border-radius: 2px;
+}
+
+.transfer-title {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  background-color: #EBEEF5;
+  border-bottom: 1px solid #DCDFE6;
+}
+
+.transfer-content {
+  padding: 12px 16px;
+}
+
+.transfer-list {
+  list-style: none;
+}
+
+.transfer-item {
+
+}
+
+.transfer-item label {
+  display: flex;
+  align-items: center;
+  line-height: 24px;
+}
+
+.transfer-item label .checkbox {
+  margin-top: 2px;
+  margin-right: 8px;
+}
+
+.transfer-btn {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 0 24px;
+}
+
+.transfer-btn .btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  margin: 8px;
+  font-size: 20px;
+}
+
+.transfer-btn .btn .icon {
+  margin: 0;
+}
+
+/* Modal部分CSS */
+.modal {
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-dialog {
+  width: 450px;
+  margin: 120px auto;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  position: relative;
+  padding: 16px;
+  border-bottom: 1px solid #DCDFE6;
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+}
+
+.modal-dismiss {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-content {
+  padding: 40px;
+}
+
+.modal-footer {
+  display: flex;
+  padding: 16px;
+  flex-flow: row-reverse;
+  border-top: 1px solid #DCDFE6;
+}
+
+.modal-footer > .btn {
+  width: 64px;
+  height: 34px;
+  margin-left: 14px;
+}
+
+.modal-footer > .btn-primary:disabled {
+  width: 96px;
+}
+
+/* Response框 */
+.popover-modal {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 16px;
+  width: 240px;
+}
+
+.popover-modal > .success {
+  background-color: #67C23A;
+}
+
+.popover-modal > .info {
+  background-color: #409EFF;
+}
+
+.popover-modal > .warning {
+  background-color: #E6A23C;
+}
+
+.popover-modal > .error {
+  background-color: #F56C6C;
+}
+
+.popover {
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 16px;
+  margin-top: 16px;
+  color: #FFFFFF;
+  font-size: 14px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.popover > .icon {
+  padding-right: 4px;
+}
+
+/* Rotate部分CSS */
+.rotate {
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 1s;
+  -moz-transition-property: -moz-transform;
+  -moz-transition-duration: 1s;
+  -webkit-animation: rotate 1s linear infinite;
+  -moz-animation: rotate 1s linear infinite;
+  -o-animation: rotate 1s linear infinite;
+  animation: rotate 1s linear infinite;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg)
+  }
+  to {
+    -webkit-transform: rotate(360deg)
+  }
+}
+
+@-moz-keyframes rotate {
+  from {
+    -moz-transform: rotate(0deg)
+  }
+  to {
+    -moz-transform: rotate(359deg)
+  }
+}
+
+@-o-keyframes rotate {
+  from {
+    -o-transform: rotate(0deg)
+  }
+  to {
+    -o-transform: rotate(359deg)
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(359deg)
+  }
+}
+
+/* Icon部分CSS */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('assets/fonts/glyphicons-halflings-regular.eot');
+  src: url('assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('assets/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('assets/fonts/glyphicons-halflings-regular.woff') format('woff'), url('assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.icon {
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings', serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-remove:before {
+  content: "\e014";
+}
+
+.icon-off:before {
+  content: "\e017";
+}
+
+.icon-cog:before {
+  content: "\e019";
+}
+
+.icon-refresh:before {
+  content: "\e031";
+}
+
+.icon-remove-sign:before {
+  content: "\e083";
+}
+
+.icon-ok-sign:before {
+  content: "\e084";
+}
+
+.icon-question-sign:before {
+  content: "\e085";
+}
+
+.icon-info-sign:before {
+  content: "\e086";
+}
+
+.icon-exclamation-sign:before {
+  content: "\e101";
+}
+
+.icon-menu-left:before {
+  content: "\e257";
+}
+
+.icon-menu-right:before {
+  content: "\e258";
+}
+
+@media (max-width: 767px) {
+  html {
+    overflow-y: auto;
+  }
+
+  .header {
+    height: 52px;
+    margin-bottom: 20px;
+  }
+
+  .header-fixed {
+    height: 52px;
+  }
+
+  .header .container {
+    height: 52px;
+  }
+
+  .footer {
+    height: 52px;
+    line-height: 52px;
+  }
+
+  .logo {
+    width: 96px;
+    height: 36px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  .panel {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+  }
+
+  .candidate {
+    flex-flow: column;
+  }
+
+  .table {
+    margin-bottom: 12px;
+  }
+
+  .table-hover > tbody > tr:hover {
+    background-color: transparent;
+  }
+
+  .popover-modal {
+    top: 56px;
+    right: 12px;
+  }
+}

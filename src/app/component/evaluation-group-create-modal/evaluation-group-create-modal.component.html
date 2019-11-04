@@ -1,0 +1,28 @@
+<div class="modal" *ngIf="modalService.isCreateEvaluationGroupModalVisible">
+  <dialog class="modal-dialog">
+    <header class="modal-header">
+      <h1 class="modal-title">添加考核评价评分组</h1>
+      <div class="modal-dismiss">
+        <span class="icon icon-remove" (click)="modalService.dismissCreateEvaluationGroupModal()"></span>
+      </div>
+    </header>
+    <main class="modal-content">
+      <form class="form-horizontal form-horizontal-2">
+        <div class="form-group">
+          <label class="form-label">名称</label>
+          <input #name (input)="evaluationGroup.name = name.value" class="form-control" type="text"/>
+        </div>
+      </form>
+    </main>
+    <footer class="modal-footer">
+      <button class="btn btn-default" type="button" (click)="modalService.dismissCreateEvaluationGroupModal()"
+              [disabled]="isBtnDisabled">取消
+      </button>
+      <button class="btn btn-primary" type="button" (click)="saveEvaluationGroup()" [disabled]="isBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isBtnDisabled"></span>
+        <span *ngIf="!isBtnDisabled">创建</span>
+        <span *ngIf="isBtnDisabled">正在保存</span>
+      </button>
+    </footer>
+  </dialog>
+</div>

@@ -1,0 +1,22 @@
+<div class="modal" *ngIf="modalService.isSubmitEvaluationPlanModalVisible">
+  <dialog class="modal-dialog">
+    <header class="modal-header">
+      <h1 class="modal-title">提交考核评价计划</h1>
+      <div class="modal-dismiss"><span class="icon icon-remove"
+                                       (click)="modalService.dismissSubmitEvaluationPlanModal()"></span></div>
+    </header>
+    <main class="modal-content">
+      <p>您确定要提交{{plan.name}}考核评价计划吗？</p>
+    </main>
+    <footer class="modal-footer">
+      <button class="btn btn-default" type="button" (click)="modalService.dismissSubmitEvaluationPlanModal()"
+              [disabled]="isBtnDisabled">取消
+      </button>
+      <button class="btn btn-primary" type="button" (click)="submitEvaluationPlan()" [disabled]="isBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isBtnDisabled"></span>
+        <span *ngIf="!isBtnDisabled">提交</span>
+        <span *ngIf="isBtnDisabled">正在提交</span>
+      </button>
+    </footer>
+  </dialog>
+</div>

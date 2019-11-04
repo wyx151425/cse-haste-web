@@ -1,0 +1,44 @@
+<main class="container">
+  <div class="panel">
+    <section class="transfer">
+      <section class="transfer-form">
+        <h1 class="transfer-title">全部评委</h1>
+        <div class="transfer-content">
+          <ul class="transfer-list">
+            <li class="transfer-item" *ngFor="let judge of judges">
+              <label *ngIf="null == judge.groupId">
+                <input type="checkbox" (change)="noGroupCheckboxChange($event)" [value]="judge.id"/><span class="checkbox"></span><span>{{judge.name}}</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="transfer-btn">
+        <button class="btn btn-default" (click)="pushJudgeToGroup()"><span class="icon icon-menu-right"></span></button>
+        <button class="btn btn-default" (click)="removeGroupJudge()"><span class="icon icon-menu-left"></span></button>
+      </section>
+      <section class="transfer-form">
+        <h1 class="transfer-title">组内评委</h1>
+        <div class="transfer-content">
+          <ul class="transfer-list">
+            <li class="transfer-item" *ngFor="let judge of judges">
+              <label *ngIf="null != judge.groupId && groupId == judge.groupId">
+                <input type="checkbox" (change)="groupCheckboxChange($event)" [value]="judge.id"/><span class="checkbox"></span><span>{{judge.name}}</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </section>
+    <section class="btn-group">
+      <a routerLink="/plan/{{planId}}/groups">
+        <button class="btn btn-primary" type="button" [disabled]="isBtnDisabled">返回</button>
+      </a>
+      <button class="btn btn-primary" type="button" (click)="saveJudgesGroup()" [disabled]="isBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isBtnDisabled"></span>
+        <span *ngIf="!isBtnDisabled">保存</span>
+        <span *ngIf="isBtnDisabled">正在保存</span>
+      </button>
+    </section>
+  </div>
+</main>

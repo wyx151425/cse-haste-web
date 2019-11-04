@@ -1,0 +1,58 @@
+<main class="container">
+  <div class="panel">
+    <p class="candidate">
+      <span>综合考核评价系统</span>
+      <span>考核评价计划列表</span>
+    </p>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>名称</th>
+        <th>类型</th>
+        <th>启动时间</th>
+        <th>完成时间</th>
+        <th>进行情况</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let evaluationPlan of evaluationPlans">
+        <td>{{evaluationPlan.name}}</td>
+        <td>
+          <span *ngIf="100 === evaluationPlan.type">领导班子考核评价</span>
+          <span *ngIf="200 === evaluationPlan.type">领导干部考核评价</span>
+          <span *ngIf="300 === evaluationPlan.type">专业人才考核评价</span>
+        </td>
+        <td>{{evaluationPlan.startAt}}</td>
+        <td>{{evaluationPlan.completeAt}}</td>
+        <td>
+          <span *ngIf="100 == evaluationPlan.stage">未启动</span>
+          <span *ngIf="200 == evaluationPlan.stage">进行中</span>
+          <span *ngIf="300 == evaluationPlan.stage">已完成</span>
+        </td>
+        <td>
+          <a routerLink="/evaluationPlan/{{evaluationPlan.id}}/evaluationGroup/list">
+            <button class="btn btn-link" type="button">分组管理</button>
+          </a>
+          <button class="btn btn-link" *ngIf="100 == evaluationPlan.stage"
+                  (click)="modalService.showStartEvaluationPlanModal(evaluationPlan)">启动
+          </button>
+          <button class="btn btn-link" *ngIf="100 == evaluationPlan.stage"
+                  (click)="modalService.showDeleteEvaluationPlanModal(plan)">删除
+          </button>
+          <button class="btn btn-link" *ngIf="200 == evaluationPlan.stage"
+                  (click)="modalService.showSubmitEvaluationPlanModal(evaluationPlan)">提交
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <section class="btn-group">
+      <button class="btn btn-primary" type="button" (click)="modalService.showCreateEvaluationPlanModal()">创建计划</button>
+    </section>
+  </div>
+</main>
+<app-evaluation-plan-add-modal (emitter)="getNewEvaluationPlan($event)"></app-evaluation-plan-add-modal>
+<app-evaluation-plan-delete-modal (emitter)="deleteEvaluationPlan($event)"></app-evaluation-plan-delete-modal>
+<app-evaluation-plan-start-modal (emitter)="startEvaluationPlan($event)"></app-evaluation-plan-start-modal>
+<app-evaluation-plan-submit-modal (emitter)="submitEvaluationPlan($event)"></app-evaluation-plan-submit-modal>

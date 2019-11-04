@@ -1,0 +1,10 @@
+<div class="popover-modal" *ngIf="promptService.prompts.length > 0">
+  <div class="popover" *ngFor="let prompt of promptService.prompts"
+       [ngClass]="{'error': 0 == prompt.status, 'success': 1 == prompt.status, 'warning': 2 == prompt.status, 'info': 3 == prompt.status}">
+    <span class="icon icon-remove-sign" *ngIf="0 == prompt.status"></span>
+    <span class="icon icon-ok-sign" *ngIf="1 == prompt.status"></span>
+    <span class="icon icon-exclamation-sign" *ngIf="2 == prompt.status"></span>
+    <span class="icon icon-info-sign" *ngIf="3 == prompt.status"></span>
+    <span>{{prompt.message}}</span>
+  </div>
+</div>
