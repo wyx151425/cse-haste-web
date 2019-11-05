@@ -32,7 +32,7 @@
         </td>
         <td>
           <a routerLink="/evaluationPlan/{{evaluationPlan.id}}/evaluationGroup/list">
-            <button class="btn btn-link" type="button">分组管理</button>
+            <button class="btn btn-link" type="button">评分组管理</button>
           </a>
           <button class="btn btn-link" *ngIf="100 == evaluationPlan.stage"
                   (click)="modalService.showStartEvaluationPlanModal(evaluationPlan)">启动
@@ -48,11 +48,13 @@
       </tbody>
     </table>
     <section class="btn-group">
+      <button class="btn btn-primary" type="button" (click)="modalService.showImportUserModal()">导入用户</button>
       <button class="btn btn-primary" type="button" (click)="modalService.showCreateEvaluationPlanModal()">创建计划</button>
     </section>
   </div>
 </main>
-<app-evaluation-plan-add-modal (emitter)="getNewEvaluationPlan($event)"></app-evaluation-plan-add-modal>
+<app-evaluation-plan-create-modal (emitter)="getNewEvaluationPlan($event)"></app-evaluation-plan-create-modal>
 <app-evaluation-plan-delete-modal (emitter)="deleteEvaluationPlan($event)"></app-evaluation-plan-delete-modal>
 <app-evaluation-plan-start-modal (emitter)="startEvaluationPlan($event)"></app-evaluation-plan-start-modal>
 <app-evaluation-plan-submit-modal (emitter)="submitEvaluationPlan($event)"></app-evaluation-plan-submit-modal>
+<app-user-import-modal></app-user-import-modal>

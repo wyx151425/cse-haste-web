@@ -14,7 +14,7 @@ export class EvaluatorsResolverService implements Resolve<Response<Array<Evaluat
   constructor(private evaluatorService: EvaluatorService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Response<Array<Evaluator>>> | Promise<Response<Array<Evaluator>>> | Response<Array<Evaluator>> {
-    const evaluationGroupId: number = route.params['evaluationGroupId'];
+    const evaluationGroupId: number = Number(route.params['evaluationGroupId']);
     return this.evaluatorService.getEvaluatorsByEvaluationGroup(evaluationGroupId, null).pipe(
       take(1),
       mergeMap(response => {

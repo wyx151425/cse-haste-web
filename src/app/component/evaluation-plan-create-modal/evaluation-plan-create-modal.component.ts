@@ -6,7 +6,7 @@ import {EvaluationPlanService} from '../../service/evaluation-plan.service';
 import {HasteCallback} from '../../model/util/haste-callback';
 
 @Component({
-  selector: 'app-evaluation-plan-add-modal',
+  selector: 'app-evaluation-plan-create-modal',
   templateUrl: './evaluation-plan-create-modal.component.html',
   styleUrls: ['./evaluation-plan-create-modal.component.css']
 })

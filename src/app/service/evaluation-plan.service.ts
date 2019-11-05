@@ -52,6 +52,14 @@ export class EvaluationPlanService extends HasteService<EvaluationPlan> {
     );
   }
 
+  public getEvaluationPlanById(id: number, callback: HasteCallback<EvaluationPlan>): Observable<Response<EvaluationPlan>> {
+    const url = `${this.evaluationPlansUrl}/${id}`;
+    return this.httpClient.get<Response<EvaluationPlan>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<EvaluationPlan>>('get evaluation plan by id'))
+    );
+  }
+
   public getEvaluationPlans(callback: HasteCallback<Array<EvaluationPlan>>): Observable<Response<Array<EvaluationPlan>>> {
     return this.httpClient.get<Response<Array<EvaluationPlan>>>(this.evaluationPlansUrl).pipe(
       tap(response => this.handleResponse(response, callback)),

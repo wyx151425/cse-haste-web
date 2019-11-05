@@ -4,6 +4,7 @@ import {EvaluationPlan} from '../model/evaluation-plan';
 import {EvaluationGroup} from '../model/evaluation-group';
 import {User} from '../model/user';
 import {Evaluatee} from '../model/evaluatee';
+import {Evaluator} from '../model/evaluator';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,7 @@ export class ModalService {
   public isDeleteEvaluateeModalVisible = false;
   public isAddEvaluatorModalVisible = false;
   public isDeleteEvaluatorModalVisible = false;
+  public isImportUserModalVisible = false;
   public isExportEvaluationScoreFormsModalVisible = false;
 
   private deleteEvaluationPlanSource = new Subject();
@@ -82,8 +84,8 @@ export class ModalService {
     this.isCreateEvaluationPlanModalVisible = false;
   }
 
-  public showDeleteEvaluationPlanModal(plan: EvaluationPlan): void {
-    this.deleteEvaluationPlanSource.next(plan);
+  public showDeleteEvaluationPlanModal(evaluationPlan: EvaluationPlan): void {
+    this.deleteEvaluationPlanSource.next(evaluationPlan);
     this.isDeleteEvaluationPlanModalVisible = true;
   }
 
@@ -91,8 +93,8 @@ export class ModalService {
     this.isDeleteEvaluationPlanModalVisible = false;
   }
 
-  public showStartEvaluationPlanModal(plan: EvaluationPlan): void {
-    this.startEvaluationPlanSource.next(plan);
+  public showStartEvaluationPlanModal(evaluationPlan: EvaluationPlan): void {
+    this.startEvaluationPlanSource.next(evaluationPlan);
     this.isStartEvaluationPlanModalVisible = true;
   }
 
@@ -100,8 +102,8 @@ export class ModalService {
     this.isStartEvaluationPlanModalVisible = false;
   }
 
-  public showSubmitEvaluationPlanModal(plan: EvaluationPlan): void {
-    this.submitEvaluationPlanSource.next(plan);
+  public showSubmitEvaluationPlanModal(evaluationPlan: EvaluationPlan): void {
+    this.submitEvaluationPlanSource.next(evaluationPlan);
     this.isSubmitEvaluationPlanModalVisible = true;
   }
 
@@ -109,8 +111,8 @@ export class ModalService {
     this.isSubmitEvaluationPlanModalVisible = false;
   }
 
-  public showCreateEvaluationGroupModal(plan: EvaluationPlan): void {
-    this.createEvaluationGroupSource.next(plan);
+  public showCreateEvaluationGroupModal(evaluationPlan: EvaluationPlan): void {
+    this.createEvaluationGroupSource.next(evaluationPlan);
     this.isCreateEvaluationGroupModalVisible = true;
   }
 
@@ -118,8 +120,8 @@ export class ModalService {
     this.isCreateEvaluationGroupModalVisible = false;
   }
 
-  public showDeleteEvaluationGroupModal(group: EvaluationGroup): void {
-    this.deleteEvaluationGroupSource.next(group);
+  public showDeleteEvaluationGroupModal(evaluationGroup: EvaluationGroup): void {
+    this.deleteEvaluationGroupSource.next(evaluationGroup);
     this.isDeleteEvaluationGroupModalVisible = true;
   }
 
@@ -127,8 +129,8 @@ export class ModalService {
     this.isDeleteEvaluationGroupModalVisible = false;
   }
 
-  public showAddEvaluateeModal(plan: EvaluationPlan): void {
-    this.addEvaluateeSource.next(plan);
+  public showAddEvaluateeModal(evaluationGroup: EvaluationGroup): void {
+    this.addEvaluateeSource.next(evaluationGroup);
     this.isAddEvaluateeModalVisible = true;
   }
 
@@ -136,8 +138,8 @@ export class ModalService {
     this.isAddEvaluateeModalVisible = false;
   }
 
-  public showDeleteEvaluateeModal(candidate: Evaluatee): void {
-    this.deleteEvaluateeSource.next(candidate);
+  public showDeleteEvaluateeModal(evaluatee: Evaluatee): void {
+    this.deleteEvaluateeSource.next(evaluatee);
     this.isDeleteEvaluateeModalVisible = true;
   }
 
@@ -145,8 +147,8 @@ export class ModalService {
     this.isDeleteEvaluateeModalVisible = false;
   }
 
-  public showAddEvaluatorModal(plan: EvaluationPlan): void {
-    this.addEvaluatorSource.next(plan);
+  public showAddEvaluatorModal(evaluationGroup: EvaluationGroup): void {
+    this.addEvaluatorSource.next(evaluationGroup);
     this.isAddEvaluatorModalVisible = true;
   }
 
@@ -154,8 +156,8 @@ export class ModalService {
     this.isAddEvaluatorModalVisible = false;
   }
 
-  public showDeleteEvaluatorModal(judge: User): void {
-    this.deleteEvaluatorSource.next(judge);
+  public showDeleteEvaluatorModal(evaluator: Evaluator): void {
+    this.deleteEvaluatorSource.next(evaluator);
     this.isDeleteEvaluatorModalVisible = true;
   }
 
@@ -163,8 +165,16 @@ export class ModalService {
     this.isDeleteEvaluatorModalVisible = false;
   }
 
-  public showExportEvaluationScoreFormsModal(plan: EvaluationPlan): void {
-    this.exportEvaluationScoreFormsSource.next(plan);
+  public showImportUserModal(): void {
+    this.isImportUserModalVisible = true;
+  }
+
+  public dismissImportUserModal(): void {
+    this.isImportUserModalVisible = false;
+  }
+
+  public showExportEvaluationScoreFormsModal(evaluationPlan: EvaluationPlan): void {
+    this.exportEvaluationScoreFormsSource.next(evaluationPlan);
     this.isExportEvaluationScoreFormsModalVisible = true;
   }
 

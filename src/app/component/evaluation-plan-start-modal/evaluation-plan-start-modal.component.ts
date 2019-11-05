@@ -22,7 +22,7 @@ export class EvaluationPlanStartModalComponent implements OnInit, HasteCallback<
   }
 
   ngOnInit() {
-    this.modalService.startEvaluationPlanObservable.subscribe((plan: EvaluationPlan) => this.evaluationPlan = plan);
+    this.modalService.startEvaluationPlanObservable.subscribe((evaluationPlan: EvaluationPlan) => this.evaluationPlan = evaluationPlan);
   }
 
   public startEvaluationPlan(): void {

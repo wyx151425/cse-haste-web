@@ -6,11 +6,12 @@ import {HasteCallback} from '../model/util/haste-callback';
 import {Observable} from 'rxjs';
 import {Response} from '../model/dto/response';
 import {catchError, tap} from 'rxjs/operators';
+import {User} from '../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EvaluatorService extends HasteService<Evaluator> {
+export class EvaluatorService extends HasteService<Evaluator | User> {
 
   private evaluatorsUrl = '/api/evaluators';
   private evaluationGroupsUrl = '/api/evaluationGroups';
@@ -39,8 +40,15 @@ export class EvaluatorService extends HasteService<Evaluator> {
     const url = `${this.evaluationGroupsUrl}/${evaluationGroupId}/evaluators`;
     return this.httpClient.get<Response<Array<Evaluator>>>(url).pipe(
       tap(response => this.handleResponse(response, callback)),
-      catchError(this.handleError<Response<Array<Evaluator>>>('get evaluators by evaluation evaluationGroup'))
+      catchError(this.handleError<Response<Array<Evaluator>>>('get evaluators by evaluation group'))
     );
   }
 
+  public getNotSelectEvaluatorsByEvaluationGroup(evaluationGroupId: number, callback: HasteCallback<Array<User>>): Observable<Response<Array<User>>> {
+    const url = `${this.evaluationGroupsUrl}/${evaluationGroupId}/notSelectEvaluators`;
+    return this.httpClient.get<Response<Array<User>>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<Array<User>>>('get not select evaluators by evaluation group'))
+    );
+  }
 }

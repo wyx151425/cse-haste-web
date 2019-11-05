@@ -6,11 +6,12 @@ import {HttpClient} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 import {HasteService} from '../model/util/haste-service';
 import {Evaluatee} from '../model/evaluatee';
+import {User} from '../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EvaluateeService extends HasteService<Evaluatee | string> {
+export class EvaluateeService extends HasteService<Evaluatee | User> {
 
   private evaluateesUrl = '/api/evaluatees';
   private evaluationGroupsUrl = '/api/evaluationGroups';
@@ -39,7 +40,15 @@ export class EvaluateeService extends HasteService<Evaluatee | string> {
     const url = `${this.evaluationGroupsUrl}/${evaluationGroupId}/evaluatees`;
     return this.httpClient.get<Response<Array<Evaluatee>>>(url).pipe(
       tap(response => this.handleResponse(response, callback)),
-      catchError(this.handleError<Response<Array<Evaluatee>>>('get evaluatees by evaluation evaluationGroup'))
+      catchError(this.handleError<Response<Array<Evaluatee>>>('get evaluatees by evaluation group'))
+    );
+  }
+
+  public getNotSelectEvaluateesByEvaluationGroup(evaluationGroupId: number, callback: HasteCallback<Array<User>>): Observable<Response<Array<User>>> {
+    const url = `${this.evaluationGroupsUrl}/${evaluationGroupId}/notSelectEvaluatees`;
+    return this.httpClient.get<Response<Array<User>>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<Array<User>>>('get not select evaluatees by evaluation group'))
     );
   }
 }

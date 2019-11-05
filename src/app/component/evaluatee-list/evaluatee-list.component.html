@@ -1,0 +1,39 @@
+<main class="container">
+  <div class="panel">
+    <p class="candidate">
+      <span>{{evaluationGroup.name}}</span>
+      <span>评价者列表</span>
+    </p>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>姓名</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th *ngIf="!evaluationGroup.complete">操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let evaluatee of evaluatees">
+        <td>{{evaluatee.user.name}}</td>
+        <td>{{evaluatee.user.username}}</td>
+        <td>{{evaluatee.user.password}}</td>
+        <td *ngIf="!evaluationGroup.complete">
+          <button class="btn btn-link" type="button" (click)="modalService.showDeleteEvaluateeModal(evaluatee)">删除
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <section class="btn-group">
+      <a routerLink="/evaluationPlan/{{evaluationGroup.evaluationPlanId}}/evaluationGroup/list">
+        <button class="btn btn-primary" type="button">返回</button>
+      </a>
+      <a routerLink="/evaluationGroup/{{evaluationGroup.id}}/notSelectEvaluatee/list" *ngIf="!evaluationGroup.complete">
+        <button class="btn btn-primary" type="button">添加受评者</button>
+      </a>
+    </section>
+  </div>
+</main>
+<!--<app-judge-import-modal (emitter)="getNewJudges($event)"></app-judge-import-modal>-->
+<!--<app-judge-delete-modal (emitter)="deleteJudge($event)"></app-judge-delete-modal>-->

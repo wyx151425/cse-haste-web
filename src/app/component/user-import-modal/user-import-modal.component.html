@@ -1,0 +1,26 @@
+<div class="modal" *ngIf="modalService.isImportUserModalVisible">
+  <dialog class="modal-dialog">
+    <header class="modal-header">
+      <h1 class="modal-title">导入用户</h1>
+      <div class="modal-dismiss">
+        <span class="icon icon-remove" (click)="modalService.dismissImportUserModal()"></span>
+      </div>
+    </header>
+    <main class="modal-content">
+      <form class="form-horizontal form-horizontal-2">
+        <div class="form-group">
+          <label class="form-label">文件</label>
+          <input class="form-control" type="file" (change)="selectFile($event)"/>
+        </div>
+      </form>
+    </main>
+    <footer class="modal-footer">
+      <button class="btn btn-default" type="button" (click)="modalService.dismissImportUserModal()" [disabled]="isBtnDisabled">取消</button>
+      <button class="btn btn-primary" type="button" (click)="importUsers()" [disabled]="isBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isBtnDisabled"></span>
+        <span *ngIf="!isBtnDisabled">导入</span>
+        <span *ngIf="isBtnDisabled">正在导入</span>
+      </button>
+    </footer>
+  </dialog>
+</div>

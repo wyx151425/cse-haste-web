@@ -10,11 +10,16 @@
       <form class="form-horizontal form-horizontal-2">
         <div class="form-group">
           <label class="form-label">名称</label>
-          <input #name (input)="plan.name = name.value" class="form-control" type="text"/>
+          <input #name (input)="evaluationPlan.name = name.value" class="form-control" type="text"/>
         </div>
         <div class="form-group">
           <label class="form-label">类型</label>
-          <input #type (input)="plan.year = year.value" class="form-control" type="text"/>
+          <select #type (change)="evaluationPlan.type = type.value" class="form-control">
+            <option selected disabled value="0">请选择</option>
+            <option value="100">领导班子综合测评</option>
+            <option value="200">领导干部综合测评</option>
+            <option value="300">专业人才综合测评</option>
+          </select>
         </div>
       </form>
     </main>

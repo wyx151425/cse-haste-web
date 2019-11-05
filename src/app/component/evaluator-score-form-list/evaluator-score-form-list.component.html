@@ -1,3 +1,45 @@
-<p>
-  evaluator-score-form-list works!
-</p>
+<main class="container">
+  <div class="panel">
+    <p class="candidate">
+      <span>综合考核评价系统</span>
+      <span>考核评价评分表列表</span>
+    </p>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>评分组名称</th>
+        <th>评分表类型</th>
+        <th>完成情况</th>
+        <th>完成时间</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let evaluationScoreForm of evaluationScoreForms">
+        <td>{{evaluationScoreForm.evaluationGroupName}}</td>
+        <td>
+          <span *ngIf="100 === evaluationScoreForm.type">领导班子考核评价</span>
+          <span *ngIf="200 === evaluationScoreForm.type">领导干部考核评价</span>
+          <span *ngIf="300 === evaluationScoreForm.type">专业人才考核评价</span>
+        </td>
+        <td>
+          <span *ngIf="!evaluationScoreForm.complete">未完成</span>
+          <span *ngIf="evaluationScoreForm.complete">已完成</span>
+        </td>
+        <td>{{evaluationPlan.completeAt | date: 'yyyy-MM-dd hh:mm:ss'}}</td>
+        <td>
+          <a routerLink="/leadershipScoreForm/{{evaluationScoreForm.id}}" *ngIf="100 === evaluationScoreForm.type">
+            <button class="btn btn-link" type="button">评分</button>
+          </a>
+          <a routerLink="/leaderCadreScoreForm/{{evaluationScoreForm.id}}" *ngIf="200 === evaluationScoreForm.type">
+            <button class="btn btn-link" type="button">评分</button>
+          </a>
+          <a routerLink="/professionalScoreForm/{{evaluationScoreForm.id}}" *ngIf="300 === evaluationScoreForm.type">
+            <button class="btn btn-link" type="button">评分</button>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

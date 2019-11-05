@@ -530,6 +530,10 @@ input[type="checkbox"]:checked + .checkbox {
   padding: 40px;
 }
 
+.modal-content p {
+  font-size: 20px;
+}
+
 .modal-footer {
   display: flex;
   padding: 16px;

@@ -1,85 +1,69 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AriesIndexComponent} from './component/aries-index/aries-index.component';
-import {AriesCandidateInfoComponent} from './component/aries-candidate-info/aries-candidate-info.component';
-import {AriesScoreEditComponent} from './component/aries-score-edit/aries-score-edit.component';
-import {AriesScoreSubmitComponent} from './component/aries-score-submit/aries-score-submit.component';
-import {AriesLoginComponent} from './component/aries-login/aries-login.component';
-import {AriesPlanListComponent} from './component/aries-plan-list/aries-plan-list.component';
-import {AriesPlanGroupComponent} from './component/aries-plan-group/aries-plan-group.component';
-import {AriesPlanGroupsComponent} from './component/aries-plan-groups/aries-plan-groups.component';
+import {HasteUserLoginComponent} from './component/haste-user-login/haste-user-login.component';
 import {EvaluationPlansResolverService} from './resolver/evaluation-plans-resolver.service';
 import {UserGuard} from './guard/user.guard';
 import {AdminGuard} from './guard/admin.guard';
+import {EvaluationPlanListComponent} from './component/evaluation-plan-list/evaluation-plan-list.component';
+import {EvaluationGroupListComponent} from './component/evaluation-group-list/evaluation-group-list.component';
 import {EvaluationGroupsResolverService} from './resolver/evaluation-groups-resolver.service';
-import {AriesPlanCandidatesComponent} from './component/aries-plan-candidates/aries-plan-candidates.component';
-import {AriesPlanJudgesComponent} from './component/aries-plan-judges/aries-plan-judges.component';
-import {AriesCandidateEditComponent} from './component/aries-candidate-edit/aries-candidate-edit.component';
-import {AriesCandidatesManageComponent} from './component/aries-candidates-manage/aries-candidates-manage.component';
-import {AriesJudgesManageComponent} from './component/aries-judges-manage/aries-judges-manage.component';
-import {AriesCandidateAddComponent} from './component/aries-candidate-add/aries-candidate-add.component';
+import {EvaluateeListComponent} from './component/evaluatee-list/evaluatee-list.component';
+import {EvaluateesResolverService} from './resolver/evaluatees-resolver.service';
+import {EvaluatorListComponent} from './component/evaluator-list/evaluator-list.component';
+import {EvaluatorsResolverService} from './resolver/evaluators-resolver.service';
+import {NotSelectEvaluateesResolverService} from './resolver/not-select-evaluatees-resolver.service';
+import {NotSelectEvaluatorsResolverService} from './resolver/not-select-evaluators-resolver.service';
+import {EvaluateeSelectListComponent} from './component/evaluatee-select-list/evaluatee-select-list.component';
+import {EvaluatorSelectListComponent} from './component/evaluator-select-list/evaluator-select-list.component';
+import {EvaluatorScoreFormListComponent} from './component/evaluator-score-form-list/evaluator-score-form-list.component';
+import {EvaluatorScoreFormsResolverService} from './resolver/evaluator-score-forms-resolver.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'evaluationPlan/list', pathMatch: 'full', canActivate: [UserGuard]},
-  {path: 'index', component: AriesIndexComponent, canActivate: [UserGuard]},
-  {path: 'login', component: AriesLoginComponent},
-  // {
-  //   path: 'candidate/:id/score/edit',
-  //   component: AriesScoreEditComponent,
-  //   canActivate: [UserGuard]
-  // },
-  // {
-  //   path: 'judge/:judgeId/score/submit',
-  //   component: AriesScoreSubmitComponent,
-  //   canActivate: [UserGuard]
-  // },
-  {path: 'evaluationPlan/list', component: AriesPlanListComponent, canActivate: [AdminGuard], resolve: {response: EvaluationPlansResolverService}},
-  // {
-  //   path: 'plan/:evaluationPlanId/groups',
-  //   component: AriesPlanGroupsComponent,
-  //   canActivate: [AdminGuard],
-  //   resolve: {response: EvaluationGroupsResolverService}
-  // },
-  // {
-  //   path: 'plan/:planId/candidates',
-  //   component: AriesPlanCandidatesComponent,
-  //   canActivate: [AdminGuard]
-  // },
-  // {
-  //   path: 'plan/:planId/judges',
-  //   component: AriesPlanJudgesComponent,
-  //   canActivate: [AdminGuard]
-  // },
-  // {path: 'plan/evaluationGroup/:groupId', component: AriesPlanGroupComponent, canActivate: [AdminGuard]},
-  // {
-  //   path: 'candidate/:id/info',
-  //   component: AriesCandidateInfoComponent,
-  //   canActivate: [UserGuard]
-  // },
-  // {
-  //   path: 'candidate/:id/index',
-  //   component: AriesCandidateEditComponent
-  // },
-  // {
-  //   path: 'candidate/:id/edit',
-  //   component: AriesCandidateEditComponent,
-  //   canActivate: [AdminGuard]
-  // },
-  // {
-  //   path: 'plan/:planId/evaluationGroup/:groupId/candidates',
-  //   component: AriesCandidatesManageComponent,
-  //   canActivate: [AdminGuard]
-  // },
-  // {
-  //   path: 'plan/:planId/evaluationGroup/:groupId/judges',
-  //   component: AriesJudgesManageComponent,
-  //   canActivate: [AdminGuard]
-  // },
-  // {
-  //   path: 'plan/:planId/candidate/add',
-  //   component: AriesCandidateAddComponent,
-  //   canActivate: [AdminGuard]
-  // }
+  {path: 'index', component: EvaluationPlanListComponent, canActivate: [UserGuard]},
+  {path: 'login', component: HasteUserLoginComponent},
+  {
+    path: 'evaluationPlan/list',
+    component: EvaluationPlanListComponent,
+    canActivate: [AdminGuard],
+    resolve: {response: EvaluationPlansResolverService}
+  },
+  {
+    path: 'evaluationPlan/:evaluationPlanId/evaluationGroup/list',
+    component: EvaluationGroupListComponent,
+    canActivate: [AdminGuard],
+    resolve: {response: EvaluationGroupsResolverService}
+  },
+  {
+    path: 'evaluationGroup/:evaluationGroupId/evaluatee/list',
+    component: EvaluateeListComponent,
+    canActivate: [AdminGuard],
+    resolve: {response: EvaluateesResolverService}
+  },
+  {
+    path: 'evaluationGroup/:evaluationGroupId/evaluator/list',
+    component: EvaluatorListComponent,
+    canActivate: [AdminGuard],
+    resolve: {response: EvaluatorsResolverService}
+  },
+  {
+    path: 'evaluationGroup/:evaluationGroupId/notSelectEvaluatee/list',
+    component: EvaluateeSelectListComponent,
+    canActivate: [AdminGuard],
+    resolve: {response: NotSelectEvaluateesResolverService}
+  },
+  {
+    path: 'evaluationGroup/:evaluationGroupId/notSelectEvaluator/list',
+    component: EvaluatorSelectListComponent,
+    canActivate: [AdminGuard],
+    resolve: {response: NotSelectEvaluatorsResolverService}
+  },
+  {
+    path: 'user/:userId/evaluationScoreForm/list',
+    component: EvaluatorScoreFormListComponent,
+    canActivate: [UserGuard],
+    resolve: {response: EvaluatorScoreFormsResolverService}
+  },
 ];
 
 @NgModule({

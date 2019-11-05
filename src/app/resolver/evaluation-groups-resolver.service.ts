@@ -15,7 +15,7 @@ export class EvaluationGroupsResolverService implements Resolve<Response<Array<E
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Response<Array<EvaluationGroup>>> | Promise<Response<Array<EvaluationGroup>>> | Response<Array<EvaluationGroup>> {
-    const evaluationPlanId: number = route.params['evaluationPlanId'];
+    const evaluationPlanId: number = Number(route.params['evaluationPlanId']);
     return this.evaluationGroupService.getEvaluationGroupsByEvaluationPlan(evaluationPlanId, null).pipe(
       take(1),
       mergeMap(response => {

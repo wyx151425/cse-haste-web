@@ -6,11 +6,12 @@ import {HasteService} from '../model/util/haste-service';
 import {HasteCallback} from '../model/util/haste-callback';
 import {catchError, tap} from 'rxjs/operators';
 import {Response} from '../model/dto/response';
+import {EvaluationScoreForm} from '../model/evaluation-score-form';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService extends HasteService<User> {
+export class UserService extends HasteService<User | EvaluationScoreForm> {
 
   private usersUrl = '/api/users';
 
@@ -80,6 +81,14 @@ export class UserService extends HasteService<User> {
     return this.httpClient.delete<Response<User>>(url).pipe(
       tap(response => this.handleResponse(response, callback)),
       catchError(this.handleError<Response<User>>('disable user by id'))
+    );
+  }
+
+  public getEvaluationScoreFormsByUser(userId: number, callback: HasteCallback<Array<EvaluationScoreForm>>): Observable<Response<Array<EvaluationScoreForm>>> {
+    const url = `${this.usersUrl}/${userId}/evaluationScoreForms`;
+    return this.httpClient.get<Response<Array<EvaluationScoreForm>>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<Array<EvaluationScoreForm>>>('get evaluation score forms by id'))
     );
   }
 }

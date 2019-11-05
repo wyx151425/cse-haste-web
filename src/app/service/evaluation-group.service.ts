@@ -14,6 +14,7 @@ import {EvaluationPlan} from '../model/evaluation-plan';
 export class EvaluationGroupService extends HasteService<EvaluationGroup> {
 
   private evaluationGroupsUrl = '/api/evaluationGroups';
+  private evaluationPlansUrl = '/api/evaluationPlans';
 
   constructor(private httpClient: HttpClient) {
     super();
@@ -46,7 +47,7 @@ export class EvaluationGroupService extends HasteService<EvaluationGroup> {
 
   public getEvaluationGroupsByEvaluationPlan(evaluationPlan: EvaluationPlan | number, callback: HasteCallback<Array<EvaluationGroup>>): Observable<Response<Array<EvaluationGroup>>> {
     const evaluationPlanId = typeof evaluationPlan === 'number' ? evaluationPlan : evaluationPlan.id;
-    const url = `${this.evaluationGroupsUrl}/${evaluationPlanId}/evaluationGroups`;
+    const url = `${this.evaluationPlansUrl}/${evaluationPlanId}/evaluationGroups`;
     return this.httpClient.get<Response<Array<EvaluationGroup>>>(url).pipe(
       tap(response => this.handleResponse(response, callback)),
       catchError(this.handleError<Response<Array<EvaluationGroup>>>('get evaluation groups by evaluation plan'))
