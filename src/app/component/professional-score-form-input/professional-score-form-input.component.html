@@ -1,0 +1,149 @@
+<main class="container">
+  <div class="panel">
+    <p class="candidate">
+      <span>专业人才考核评价&nbsp;-&nbsp;{{professionalScoreForm.evaluationGroupName}}</span>
+      <span>受评者：{{professionalScoreForm.evaluateeName}}</span>
+    </p>
+    <table class="table table-bordered table-reverse table-hover" style="table-layout: fixed">
+      <thead>
+      <tr>
+        <th colspan="2">品德（每项满分8分）</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>价值观</td>
+        <td>
+          <input name="moral1" [(ngModel)]="professionalScoreForm.moral1"
+                 class="form-control" type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      <tr>
+        <td>认同感</td>
+        <td>
+          <input name="moral2" [(ngModel)]="professionalScoreForm.moral2"
+                 class="form-control" type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered table-reverse table-hover" style="table-layout: fixed">
+      <thead>
+      <tr>
+        <th colspan="2">素质（每项满分8分）</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>诚实正直</td>
+        <td>
+          <input name="quality1" [(ngModel)]="professionalScoreForm.quality1" class="form-control"
+                 type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      <tr>
+        <td>责任心</td>
+        <td>
+          <input name="quality2" [(ngModel)]="professionalScoreForm.quality2" class="form-control"
+                 type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      <tr>
+        <td>进取心</td>
+        <td>
+          <input name="quality3" [(ngModel)]="professionalScoreForm.quality3" class="form-control"
+                 type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered table-reverse table-hover" style="table-layout: fixed">
+      <thead>
+      <tr>
+        <th colspan="2">能力（每项满分10分）</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>团队建设</td>
+        <td>
+          <input name="ability1" [(ngModel)]="professionalScoreForm.ability1" class="form-control"
+                 type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      <tr>
+        <td>高效执行</td>
+        <td>
+          <input name="ability2" [(ngModel)]="professionalScoreForm.ability2" class="form-control"
+                 type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      <tr>
+        <td>学习创新</td>
+        <td>
+          <input name="ability3" [(ngModel)]="professionalScoreForm.ability3" class="form-control"
+                 type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered table-reverse table-hover" style="table-layout: fixed">
+      <thead>
+      <tr>
+        <th colspan="2">业绩（每项满分10分）</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>履职绩效</td>
+        <td>
+          <input name="performance1" [(ngModel)]="professionalScoreForm.performance1" class="form-control" type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      <tr>
+        <td>问题解决</td>
+        <td>
+          <input name="performance2" [(ngModel)]="professionalScoreForm.performance2" class="form-control" type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      <tr>
+        <td>协调成效</td>
+        <td>
+          <input name="performance3" [(ngModel)]="professionalScoreForm.performance3" class="form-control" type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <section>
+      <span style="font-weight: 700">评审方法：</span><span>评委请根据《2019年度高级专业人才考核评价办法》，对受评者的品德、素质、能力、业绩进行评分，每项满分8分或10分。</span>
+    </section>
+    <section class="btn-group">
+      <a routerLink="/user/{{evaluator.userId}}/evaluationScoreForm/list">
+        <button class="btn btn-primary" type="button">返回</button>
+      </a>
+      <button class="btn btn-primary" type="button" *ngIf="!leaderCadreScoreForm.complete"
+              (click)="submitProfessionalScoreFormScore()" [disabled]="isSubmitBtnDisabled || isSaveBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isSubmitBtnDisabled"></span>
+        <span *ngIf="!isSubmitBtnDisabled">提交</span>
+        <span *ngIf="isSubmitBtnDisabled">正在提交</span>
+      </button>
+      <button class="btn btn-primary" type="button" *ngIf="!leaderCadreScoreForm.complete"
+              (click)="saveProfessionalScoreFormScore()" [disabled]="isSaveBtnDisabled || isSubmitBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isSaveBtnDisabled"></span>
+        <span *ngIf="!isSaveBtnDisabled">暂存</span>
+        <span *ngIf="isSaveBtnDisabled">正在保存</span>
+      </button>
+    </section>
+  </div>
+</main>

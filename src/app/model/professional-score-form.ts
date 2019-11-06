@@ -1,13 +1,6 @@
-import {Evaluatee} from './evaluatee';
 import {EvaluationScoreForm} from './evaluation-score-form';
 
 export class ProfessionalScoreForm extends EvaluationScoreForm {
-  /**
-   * 受评者
-   */
-  evaluateeId: number;
-  evaluateeName: string;
-  evaluatee: Evaluatee;
   /**
    * 价值观
    */

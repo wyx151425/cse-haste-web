@@ -36,6 +36,14 @@ export class EvaluatorService extends HasteService<Evaluator | User> {
     );
   }
 
+  public getEvaluatorById(id: number, callback: HasteCallback<Evaluator>): Observable<Response<Evaluator>> {
+    const url = `${this.evaluatorsUrl}/${id}`;
+    return this.httpClient.get<Response<Evaluator>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<Evaluator>>('get evaluator by id'))
+    );
+  }
+
   public getEvaluatorsByEvaluationGroup(evaluationGroupId: number, callback: HasteCallback<Array<Evaluator>>): Observable<Response<Array<Evaluator>>> {
     const url = `${this.evaluationGroupsUrl}/${evaluationGroupId}/evaluators`;
     return this.httpClient.get<Response<Array<Evaluator>>>(url).pipe(

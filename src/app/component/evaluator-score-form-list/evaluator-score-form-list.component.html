@@ -4,37 +4,45 @@
       <span>综合考核评价系统</span>
       <span>考核评价评分表列表</span>
     </p>
-    <table class="table table-bordered table-hover">
-      <thead>
-      <tr>
-        <th>评分组名称</th>
-        <th>评分表类型</th>
-        <th>完成情况</th>
-        <th>完成时间</th>
-        <th>操作</th>
-      </tr>
-      </thead>
+    <table class="table table-bordered table-reverse table-hover" *ngFor="let evaluationScoreForm of evaluationScoreForms" style="table-layout: fixed">
       <tbody>
-      <tr *ngFor="let evaluationScoreForm of evaluationScoreForms">
+      <tr>
+        <td>受评者</td>
+        <td>{{evaluationScoreForm.evaluateeName}}</td>
+      </tr>
+      <tr>
+        <td>评分组名称</td>
         <td>{{evaluationScoreForm.evaluationGroupName}}</td>
+      </tr>
+      <tr>
+        <td>评分表类型</td>
         <td>
           <span *ngIf="100 === evaluationScoreForm.type">领导班子考核评价</span>
           <span *ngIf="200 === evaluationScoreForm.type">领导干部考核评价</span>
           <span *ngIf="300 === evaluationScoreForm.type">专业人才考核评价</span>
         </td>
+      </tr>
+      <tr>
+        <td>完成情况</td>
         <td>
           <span *ngIf="!evaluationScoreForm.complete">未完成</span>
           <span *ngIf="evaluationScoreForm.complete">已完成</span>
         </td>
-        <td>{{evaluationPlan.completeAt | date: 'yyyy-MM-dd hh:mm:ss'}}</td>
+      </tr>
+      <tr>
+        <td>完成时间</td>
+        <td>{{evaluationScoreForm.completeAt | date: 'yyyy年MM月dd日 hh:mm:ss'}}</td>
+      </tr>
+      <tr>
+        <td>操作</td>
         <td>
-          <a routerLink="/leadershipScoreForm/{{evaluationScoreForm.id}}" *ngIf="100 === evaluationScoreForm.type">
+          <a routerLink="/leadershipScoreForm/{{evaluationScoreForm.id}}/input" *ngIf="100 === evaluationScoreForm.type">
             <button class="btn btn-link" type="button">评分</button>
           </a>
-          <a routerLink="/leaderCadreScoreForm/{{evaluationScoreForm.id}}" *ngIf="200 === evaluationScoreForm.type">
+          <a routerLink="/leaderCadreScoreForm/{{evaluationScoreForm.id}}/input" *ngIf="200 === evaluationScoreForm.type">
             <button class="btn btn-link" type="button">评分</button>
           </a>
-          <a routerLink="/professionalScoreForm/{{evaluationScoreForm.id}}" *ngIf="300 === evaluationScoreForm.type">
+          <a routerLink="/professionalScoreForm/{{evaluationScoreForm.id}}/input" *ngIf="300 === evaluationScoreForm.type">
             <button class="btn btn-link" type="button">评分</button>
           </a>
         </td>

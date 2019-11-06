@@ -37,6 +37,12 @@ import { EvaluatorListComponent } from './component/evaluator-list/evaluator-lis
 import { EvaluatorSelectListComponent } from './component/evaluator-select-list/evaluator-select-list.component';
 import { EvaluateeSelectListComponent } from './component/evaluatee-select-list/evaluatee-select-list.component';
 import { UserImportModalComponent } from './component/user-import-modal/user-import-modal.component';
+import { EvaluatorScoreFormInputComponent } from './component/evaluator-score-form-input/evaluator-score-form-input.component';
+import { LeadershipScoreFormInputComponent } from './component/leadership-score-form-input/leadership-score-form-input.component';
+import { LeaderCadreScoreFormInputComponent } from './component/leader-cadre-score-form-input/leader-cadre-score-form-input.component';
+import { ProfessionalScoreFormInputComponent } from './component/professional-score-form-input/professional-score-form-input.component';
+import { EvaluatorDeleteModalComponent } from './component/evaluator-delete-modal/evaluator-delete-modal.component';
+import { EvaluateeDeleteModalComponent } from './component/evaluatee-delete-modal/evaluatee-delete-modal.component';
 
 
 @NgModule({
@@ -61,7 +67,13 @@ import { UserImportModalComponent } from './component/user-import-modal/user-imp
     EvaluatorListComponent,
     EvaluatorSelectListComponent,
     EvaluateeSelectListComponent,
-    UserImportModalComponent
+    UserImportModalComponent,
+    EvaluatorScoreFormInputComponent,
+    LeadershipScoreFormInputComponent,
+    LeaderCadreScoreFormInputComponent,
+    ProfessionalScoreFormInputComponent,
+    EvaluatorDeleteModalComponent,
+    EvaluateeDeleteModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,6 @@
 import {EvaluationScoreForm} from './evaluation-score-form';
-import {Evaluatee} from './evaluatee';
 
 export class LeaderCadreScoreForm extends EvaluationScoreForm {
-  /**
-   * 受评者
-   */
-  evaluateeId: number;
-  evaluateeName: string;
-  evaluatee: Evaluatee;
   /**
    * 政治忠诚
    */
@@ -19,7 +12,7 @@ export class LeaderCadreScoreForm extends EvaluationScoreForm {
   /**
    * 政治担当
    */
-  ppoliticsPerformance3: number;
+  politicsPerformance3: number;
   /**
    * 政治能力
    */

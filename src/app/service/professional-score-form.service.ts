@@ -20,10 +20,16 @@ export class ProfessionalScoreFormService extends HasteService<ProfessionalScore
     super();
   }
 
-  public submitProfessionalScoreForm(professionalScoreForm: ProfessionalScoreForm | number, callback: HasteCallback<ProfessionalScoreForm>): Observable<Response<ProfessionalScoreForm>> {
-    const id = typeof professionalScoreForm === 'number' ? professionalScoreForm : professionalScoreForm.id;
-    const url = `${this.professionalScoreFormsUrl}/${id}/submit`;
+  public updateProfessionalScoreForm(professionalScoreForm: ProfessionalScoreForm, callback: HasteCallback<ProfessionalScoreForm>): Observable<Response<ProfessionalScoreForm>> {
     return this.httpClient.put<Response<ProfessionalScoreForm>>(this.professionalScoreFormsUrl, professionalScoreForm).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<ProfessionalScoreForm>>('update professional score form'))
+    );
+  }
+
+  public submitProfessionalScoreForm(professionalScoreForm: ProfessionalScoreForm, callback: HasteCallback<ProfessionalScoreForm>): Observable<Response<ProfessionalScoreForm>> {
+    const url = `${this.professionalScoreFormsUrl}/submit`;
+    return this.httpClient.put<Response<ProfessionalScoreForm>>(url, professionalScoreForm).pipe(
       tap(response => this.handleResponse(response, callback)),
       catchError(this.handleError<Response<ProfessionalScoreForm>>('submit professional score form'))
     );

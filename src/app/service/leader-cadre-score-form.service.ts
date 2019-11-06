@@ -20,10 +20,16 @@ export class LeaderCadreScoreFormService extends HasteService<LeaderCadreScoreFo
     super();
   }
 
-  public submitLeaderCadreScoreForm(leaderCadreScoreForm: LeaderCadreScoreForm | number, callback: HasteCallback<LeaderCadreScoreForm>): Observable<Response<LeaderCadreScoreForm>> {
-    const id = typeof leaderCadreScoreForm === 'number' ? leaderCadreScoreForm : leaderCadreScoreForm.id;
-    const url = `${this.leaderCadreScoreFormsUrl}/${id}/submit`;
+  public updateLeaderCadreScoreForm(leaderCadreScoreForm: LeaderCadreScoreForm, callback: HasteCallback<LeaderCadreScoreForm>): Observable<Response<LeaderCadreScoreForm>> {
     return this.httpClient.put<Response<LeaderCadreScoreForm>>(this.leaderCadreScoreFormsUrl, leaderCadreScoreForm).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<LeaderCadreScoreForm>>('update leader cadre score form'))
+    );
+  }
+
+  public submitLeaderCadreScoreForm(leaderCadreScoreForm: LeaderCadreScoreForm, callback: HasteCallback<LeaderCadreScoreForm>): Observable<Response<LeaderCadreScoreForm>> {
+    const url = `${this.leaderCadreScoreFormsUrl}/submit`;
+    return this.httpClient.put<Response<LeaderCadreScoreForm>>(url, leaderCadreScoreForm).pipe(
       tap(response => this.handleResponse(response, callback)),
       catchError(this.handleError<Response<LeaderCadreScoreForm>>('submit leader cadre score form'))
     );

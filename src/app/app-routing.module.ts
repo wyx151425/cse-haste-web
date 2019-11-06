@@ -17,6 +17,12 @@ import {EvaluateeSelectListComponent} from './component/evaluatee-select-list/ev
 import {EvaluatorSelectListComponent} from './component/evaluator-select-list/evaluator-select-list.component';
 import {EvaluatorScoreFormListComponent} from './component/evaluator-score-form-list/evaluator-score-form-list.component';
 import {EvaluatorScoreFormsResolverService} from './resolver/evaluator-score-forms-resolver.service';
+import {LeaderCadreScoreFormInputComponent} from './component/leader-cadre-score-form-input/leader-cadre-score-form-input.component';
+import {ProfessionalScoreFormInputComponent} from './component/professional-score-form-input/professional-score-form-input.component';
+import {LeadershipScoreFormInputComponent} from './component/leadership-score-form-input/leadership-score-form-input.component';
+import {LeadershipScoreFormResolverService} from './resolver/leadership-score-form-resolver.service';
+import {LeaderCadreScoreFormResolverService} from './resolver/leader-cadre-score-form-resolver.service';
+import {ProfessionalScoreFormResolverService} from './resolver/professional-score-form-resolver.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'evaluationPlan/list', pathMatch: 'full', canActivate: [UserGuard]},
@@ -64,6 +70,24 @@ const routes: Routes = [
     canActivate: [UserGuard],
     resolve: {response: EvaluatorScoreFormsResolverService}
   },
+  {
+    path: 'leadershipScoreForm/:leadershipScoreFormId/input',
+    component: LeadershipScoreFormInputComponent,
+    canActivate: [UserGuard],
+    resolve: {response: LeadershipScoreFormResolverService}
+  },
+  {
+    path: 'leaderCadreScoreForm/:leaderCadreScoreFormId/input',
+    component: LeaderCadreScoreFormInputComponent,
+    canActivate: [UserGuard],
+    resolve: {response: LeaderCadreScoreFormResolverService}
+  },
+  {
+    path: 'professionalScoreForm/:professionalScoreFormId/input',
+    component: ProfessionalScoreFormInputComponent,
+    canActivate: [UserGuard],
+    resolve: {response: ProfessionalScoreFormResolverService}
+  }
 ];
 
 @NgModule({
