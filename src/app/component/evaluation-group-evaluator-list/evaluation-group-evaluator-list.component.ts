@@ -10,10 +10,10 @@ import {EvaluationGroup} from '../../model/evaluation-group';
 
 @Component({
   selector: 'app-evaluator-list',
-  templateUrl: './evaluator-list.component.html',
-  styleUrls: ['./evaluator-list.component.css']
+  templateUrl: './evaluation-group-evaluator-list.component.html',
+  styleUrls: ['./evaluation-group-evaluator-list.component.css']
 })
-export class EvaluatorListComponent implements OnInit {
+export class EvaluationGroupEvaluatorListComponent implements OnInit {
 
   private evaluationGroup: EvaluationGroup;
   private evaluators: Array<Evaluator>;

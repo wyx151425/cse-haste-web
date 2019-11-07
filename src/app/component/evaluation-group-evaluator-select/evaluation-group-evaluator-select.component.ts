@@ -5,23 +5,23 @@ import {EvaluationGroupService} from '../../service/evaluation-group.service';
 import {HasteService} from '../../model/util/haste-service';
 import {EvaluationGroup} from '../../model/evaluation-group';
 import {Response} from '../../model/dto/response';
-import {HasteCallback} from '../../model/util/haste-callback';
 import {ModalService} from '../../service/modal.service';
 import {User} from '../../model/user';
-import {Evaluatee} from '../../model/evaluatee';
-import {EvaluateeService} from '../../service/evaluatee.service';
+import {EvaluatorService} from '../../service/evaluator.service';
+import {Evaluator} from '../../model/evaluator';
+import {HasteCallback} from '../../model/util/haste-callback';
 
 @Component({
-  selector: 'app-evaluatee-select-list',
-  templateUrl: './evaluatee-select-list.component.html',
-  styleUrls: ['./evaluatee-select-list.component.css']
+  selector: 'app-evaluator-select-list',
+  templateUrl: './evaluation-group-evaluator-select.component.html',
+  styleUrls: ['./evaluation-group-evaluator-select.component.css']
 })
-export class EvaluateeSelectListComponent implements OnInit, HasteCallback<Evaluatee> {
+export class EvaluationGroupEvaluatorSelectComponent implements OnInit, HasteCallback<Evaluator> {
 
   private evaluationGroup: EvaluationGroup;
   private users: Array<User>;
 
-  constructor(private evaluationGroupService: EvaluationGroupService, private evaluateeService: EvaluateeService, private modalService: ModalService, private promptService: PromptService, private route: ActivatedRoute) {
+  constructor(private evaluationGroupService: EvaluationGroupService, private evaluatorService: EvaluatorService, private modalService: ModalService, private promptService: PromptService, private route: ActivatedRoute) {
     this.evaluationGroup = new EvaluationGroup();
   }
 
@@ -41,16 +41,17 @@ export class EvaluateeSelectListComponent implements OnInit, HasteCallback<Evalu
     });
   }
 
-  public addEvaluatee(user: User): void {
-    const evaluatee = new Evaluatee();
-    evaluatee.user = user;
-    evaluatee.evaluationGroup = this.evaluationGroup;
-    this.evaluateeService.addEvaluatee(evaluatee, this).subscribe();
+  public addEvaluator(user: User): void {
+    console.log(user.name);
+    const evaluator = new Evaluator();
+    evaluator.user = user;
+    evaluator.evaluationGroup = this.evaluationGroup;
+    this.evaluatorService.addEvaluator(evaluator, this).subscribe();
   }
 
-  public deleteEvaluatee(evaluatee: Evaluatee): void {
+  public deleteEvaluator(evaluator: Evaluator): void {
     for (const user of this.users) {
-      if (evaluatee.userId === user.id) {
+      if (evaluator.userId === user.id) {
         const index = this.users.indexOf(user);
         this.users.splice(index, 1);
         break;
@@ -62,8 +63,9 @@ export class EvaluateeSelectListComponent implements OnInit, HasteCallback<Evalu
     this.promptService.pushError(message);
   }
 
-  onSuccess(evaluatee: Evaluatee): void {
-    this.deleteEvaluatee(evaluatee);
+  onSuccess(evaluator: Evaluator): void {
+    console.log(evaluator);
+    this.deleteEvaluator(evaluator);
     this.promptService.pushSuccess('添加成功');
   }
 }

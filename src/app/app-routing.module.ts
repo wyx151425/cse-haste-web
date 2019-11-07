@@ -7,14 +7,14 @@ import {AdminGuard} from './guard/admin.guard';
 import {EvaluationPlanListComponent} from './component/evaluation-plan-list/evaluation-plan-list.component';
 import {EvaluationGroupListComponent} from './component/evaluation-group-list/evaluation-group-list.component';
 import {EvaluationGroupsResolverService} from './resolver/evaluation-groups-resolver.service';
-import {EvaluateeListComponent} from './component/evaluatee-list/evaluatee-list.component';
+import {EvaluationGroupEvaluateeListComponent} from './component/evaluation-group-evaluatee-list/evaluation-group-evaluatee-list.component';
 import {EvaluateesResolverService} from './resolver/evaluatees-resolver.service';
-import {EvaluatorListComponent} from './component/evaluator-list/evaluator-list.component';
+import {EvaluationGroupEvaluatorListComponent} from './component/evaluation-group-evaluator-list/evaluation-group-evaluator-list.component';
 import {EvaluatorsResolverService} from './resolver/evaluators-resolver.service';
 import {NotSelectEvaluateesResolverService} from './resolver/not-select-evaluatees-resolver.service';
 import {NotSelectEvaluatorsResolverService} from './resolver/not-select-evaluators-resolver.service';
-import {EvaluateeSelectListComponent} from './component/evaluatee-select-list/evaluatee-select-list.component';
-import {EvaluatorSelectListComponent} from './component/evaluator-select-list/evaluator-select-list.component';
+import {EvaluationGroupEvaluateeSelectComponent} from './component/evaluation-group-evaluatee-select/evaluation-group-evaluatee-select.component';
+import {EvaluationGroupEvaluatorSelectComponent} from './component/evaluation-group-evaluator-select/evaluation-group-evaluator-select.component';
 import {EvaluatorScoreFormListComponent} from './component/evaluator-score-form-list/evaluator-score-form-list.component';
 import {EvaluatorScoreFormsResolverService} from './resolver/evaluator-score-forms-resolver.service';
 import {LeaderCadreScoreFormInputComponent} from './component/leader-cadre-score-form-input/leader-cadre-score-form-input.component';
@@ -25,6 +25,10 @@ import {LeaderCadreScoreFormResolverService} from './resolver/leader-cadre-score
 import {ProfessionalScoreFormResolverService} from './resolver/professional-score-form-resolver.service';
 import {EvaluationScoreFormListComponent} from './component/evaluation-score-form-list/evaluation-score-form-list.component';
 import {GroupScoreFormsResolverService} from './resolver/group-score-forms-resolver.service';
+import {EvaluationPlanEvaluateeListComponent} from './component/evaluation-plan-evaluatee-list/evaluation-plan-evaluatee-list.component';
+import {EvaluationPlanEvaluateesResolverService} from './resolver/evaluation-plan-evaluatees-resolver.service';
+import {EvaluationPlanNotSelectEvaluateesResolverService} from './resolver/evaluation-plan-not-select-evaluatees-resolver.service';
+import {EvaluationPlanEvaluateeSelectComponent} from './component/evaluation-plan-evaluatee-select/evaluation-plan-evaluatee-select.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'evaluationPlan/list', pathMatch: 'full', canActivate: [UserGuard]},
@@ -43,26 +47,38 @@ const routes: Routes = [
     resolve: {response: EvaluationGroupsResolverService}
   },
   {
+    path: 'evaluationPlan/:evaluationPlanId/evaluatee/list',
+    component: EvaluationPlanEvaluateeListComponent,
+    canActivate: [AdminGuard],
+    resolve: {response: EvaluationPlanEvaluateesResolverService}
+  },
+  {
+    path: 'evaluationPlan/:evaluationPlanId/notSelectEvaluatee/list',
+    component: EvaluationPlanEvaluateeSelectComponent,
+    canActivate: [AdminGuard],
+    resolve: {response: EvaluationPlanNotSelectEvaluateesResolverService}
+  },
+  {
     path: 'evaluationGroup/:evaluationGroupId/evaluatee/list',
-    component: EvaluateeListComponent,
+    component: EvaluationGroupEvaluateeListComponent,
     canActivate: [AdminGuard],
     resolve: {response: EvaluateesResolverService}
   },
   {
     path: 'evaluationGroup/:evaluationGroupId/evaluator/list',
-    component: EvaluatorListComponent,
+    component: EvaluationGroupEvaluatorListComponent,
     canActivate: [AdminGuard],
     resolve: {response: EvaluatorsResolverService}
   },
   {
     path: 'evaluationGroup/:evaluationGroupId/notSelectEvaluatee/list',
-    component: EvaluateeSelectListComponent,
+    component: EvaluationGroupEvaluateeSelectComponent,
     canActivate: [AdminGuard],
     resolve: {response: NotSelectEvaluateesResolverService}
   },
   {
     path: 'evaluationGroup/:evaluationGroupId/notSelectEvaluator/list',
-    component: EvaluatorSelectListComponent,
+    component: EvaluationGroupEvaluatorSelectComponent,
     canActivate: [AdminGuard],
     resolve: {response: NotSelectEvaluatorsResolverService}
   },

@@ -15,6 +15,7 @@ export class EvaluateeService extends HasteService<Evaluatee | User> {
 
   private evaluateesUrl = '/api/evaluatees';
   private evaluationGroupsUrl = '/api/evaluationGroups';
+  private evaluationPlansUrl = '/api/evaluationPlans';
 
   constructor(private httpClient: HttpClient) {
     super();
@@ -49,6 +50,22 @@ export class EvaluateeService extends HasteService<Evaluatee | User> {
     return this.httpClient.get<Response<Array<User>>>(url).pipe(
       tap(response => this.handleResponse(response, callback)),
       catchError(this.handleError<Response<Array<User>>>('get not select evaluatees by evaluation group'))
+    );
+  }
+
+  public getEvaluateesByEvaluationPlan(evaluationPlanId: number, callback: HasteCallback<Array<Evaluatee>>): Observable<Response<Array<Evaluatee>>> {
+    const url = `${this.evaluationPlansUrl}/${evaluationPlanId}/evaluatees`;
+    return this.httpClient.get<Response<Array<Evaluatee>>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<Array<Evaluatee>>>('get evaluatees by evaluation group'))
+    );
+  }
+
+  public getNotSelectEvaluateesByEvaluationPlan(evaluationPlanId: number, callback: HasteCallback<Array<User>>): Observable<Response<Array<User>>> {
+    const url = `${this.evaluationPlansUrl}/${evaluationPlanId}/notSelectEvaluatees`;
+    return this.httpClient.get<Response<Array<User>>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<Array<User>>>('get not select evaluatees by evaluation plan'))
     );
   }
 }

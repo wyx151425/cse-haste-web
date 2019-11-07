@@ -34,11 +34,14 @@
           <a routerLink="/evaluationPlan/{{evaluationPlan.id}}/evaluationGroup/list">
             <button class="btn btn-link" type="button">评分组管理</button>
           </a>
+          <a routerLink="/evaluationPlan/{{evaluationPlan.id}}/evaluatee/list"  *ngIf="100 !== evaluationPlan.type">
+            <button class="btn btn-link" type="button">受评者管理</button>
+          </a>
           <button class="btn btn-link" *ngIf="100 == evaluationPlan.stage"
                   (click)="modalService.showStartEvaluationPlanModal(evaluationPlan)">启动
           </button>
           <button class="btn btn-link" *ngIf="100 == evaluationPlan.stage"
-                  (click)="modalService.showDeleteEvaluationPlanModal(plan)">删除
+                  (click)="modalService.showDeleteEvaluationPlanModal(evaluationPlan)">删除
           </button>
           <button class="btn btn-link" *ngIf="200 == evaluationPlan.stage"
                   (click)="modalService.showSubmitEvaluationPlanModal(evaluationPlan)">提交

@@ -1,0 +1,38 @@
+<main class="container">
+  <div class="panel">
+    <p class="candidate">
+      <span>{{evaluationPlan.name}}</span>
+      <span>受评者列表</span>
+    </p>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>姓名</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th *ngIf="100 === evaluationPlan.stage">操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let evaluatee of evaluatees">
+        <td>{{evaluatee.user.name}}</td>
+        <td>{{evaluatee.user.username}}</td>
+        <td>{{evaluatee.user.password}}</td>
+        <td *ngIf="100 === evaluationPlan.stage">
+          <button class="btn btn-link" type="button" (click)="modalService.showDeleteEvaluateeModal(evaluatee)">删除
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <section class="btn-group">
+      <a routerLink="/evaluationPlan/list">
+        <button class="btn btn-primary" type="button">返回</button>
+      </a>
+      <a routerLink="/evaluationPlan/{{evaluationPlan.id}}/notSelectEvaluatee/list" *ngIf="100 === evaluationPlan.stage">
+        <button class="btn btn-primary" type="button">添加受评者</button>
+      </a>
+    </section>
+  </div>
+</main>
+<app-evaluatee-delete-modal (emitter)="deleteEvaluatee($event)"></app-evaluatee-delete-modal>
