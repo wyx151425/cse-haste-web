@@ -24,6 +24,7 @@ export class LeaderCadreScoreFormInputComponent implements OnInit, HasteCallback
   private leaderCadreScoreForm: LeaderCadreScoreForm;
 
   constructor(private evaluatorService: EvaluatorService, private leaderCadreScoreFormService: LeaderCadreScoreFormService, private modalService: ModalService, private promptService: PromptService, private route: ActivatedRoute) {
+    this.evaluator = new Evaluator();
   }
 
   ngOnInit() {

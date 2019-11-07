@@ -23,6 +23,8 @@ import {LeadershipScoreFormInputComponent} from './component/leadership-score-fo
 import {LeadershipScoreFormResolverService} from './resolver/leadership-score-form-resolver.service';
 import {LeaderCadreScoreFormResolverService} from './resolver/leader-cadre-score-form-resolver.service';
 import {ProfessionalScoreFormResolverService} from './resolver/professional-score-form-resolver.service';
+import {EvaluationScoreFormListComponent} from './component/evaluation-score-form-list/evaluation-score-form-list.component';
+import {GroupScoreFormsResolverService} from './resolver/group-score-forms-resolver.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'evaluationPlan/list', pathMatch: 'full', canActivate: [UserGuard]},
@@ -63,6 +65,12 @@ const routes: Routes = [
     component: EvaluatorSelectListComponent,
     canActivate: [AdminGuard],
     resolve: {response: NotSelectEvaluatorsResolverService}
+  },
+  {
+    path: 'evaluationGroup/:evaluationGroupId/evaluationScoreForm/list',
+    component: EvaluationScoreFormListComponent,
+    canActivate: [AdminGuard],
+    resolve: {response: GroupScoreFormsResolverService}
   },
   {
     path: 'user/:userId/evaluationScoreForm/list',

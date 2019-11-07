@@ -42,6 +42,7 @@ export class EvaluatorSelectListComponent implements OnInit, HasteCallback<Evalu
   }
 
   public addEvaluator(user: User): void {
+    console.log(user.name);
     const evaluator = new Evaluator();
     evaluator.user = user;
     evaluator.evaluationGroup = this.evaluationGroup;
@@ -49,8 +50,13 @@ export class EvaluatorSelectListComponent implements OnInit, HasteCallback<Evalu
   }
 
   public deleteEvaluator(evaluator: Evaluator): void {
-    const index = this.users.indexOf(evaluator.user);
-    this.users.splice(index, 1);
+    for (const user of this.users) {
+      if (evaluator.userId === user.id) {
+        const index = this.users.indexOf(user);
+        this.users.splice(index, 1);
+        break;
+      }
+    }
   }
 
   onError(message: string): void {
@@ -58,6 +64,7 @@ export class EvaluatorSelectListComponent implements OnInit, HasteCallback<Evalu
   }
 
   onSuccess(evaluator: Evaluator): void {
+    console.log(evaluator);
     this.deleteEvaluator(evaluator);
     this.promptService.pushSuccess('添加成功');
   }

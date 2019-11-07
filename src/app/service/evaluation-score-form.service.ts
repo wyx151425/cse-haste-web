@@ -14,6 +14,7 @@ export class EvaluationScoreFormService extends HasteService<EvaluationScoreForm
 
   private evaluationScoreFormsUrl = '/api/evaluationScoreForms';
   private evaluatorsUrl = '/api/evaluators';
+  private evaluationGroupsUrl = '/api/evaluationGroups';
 
   constructor(private httpClient: HttpClient) {
     super();
@@ -24,6 +25,14 @@ export class EvaluationScoreFormService extends HasteService<EvaluationScoreForm
     return this.httpClient.get<Response<Array<EvaluationScoreForm>>>(url).pipe(
       tap(response => this.handleResponse(response, callback)),
       catchError(this.handleError<Response<Array<EvaluationScoreForm>>>('get evaluation score forms by id'))
+    );
+  }
+
+  public getEvaluationScoreFormsByEvaluationGroupId(evaluationGroupId: number, callback: HasteCallback<Array<EvaluationScoreForm>>): Observable<Response<Array<EvaluationScoreForm>>> {
+    const url = `${this.evaluationGroupsUrl}/${evaluationGroupId}/evaluationScoreForms`;
+    return this.httpClient.get<Response<Array<EvaluationScoreForm>>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<Array<EvaluationScoreForm>>>('get evaluation score forms by evaluation group id'))
     );
   }
 }

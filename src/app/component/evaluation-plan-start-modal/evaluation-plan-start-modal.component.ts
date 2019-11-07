@@ -26,6 +26,7 @@ export class EvaluationPlanStartModalComponent implements OnInit, HasteCallback<
   }
 
   public startEvaluationPlan(): void {
+    this.isBtnDisabled = true;
     this.evaluationPlanService.startEvaluationPlan(this.evaluationPlan, this).subscribe();
   }
 
@@ -34,8 +35,8 @@ export class EvaluationPlanStartModalComponent implements OnInit, HasteCallback<
     this.isBtnDisabled = false;
   }
 
-  onSuccess(plan: EvaluationPlan): void {
-    this.emitter.emit(plan);
+  onSuccess(evaluationPlan: EvaluationPlan): void {
+    this.emitter.emit(evaluationPlan);
     this.promptService.pushSuccess('启动成功');
     this.modalService.dismissStartEvaluationPlanModal();
     this.isBtnDisabled = false;

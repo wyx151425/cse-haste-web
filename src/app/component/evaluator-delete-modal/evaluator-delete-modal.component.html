@@ -1,3 +1,22 @@
-<p>
-  evaluator-delete-modal works!
-</p>
+<div class="modal" *ngIf="modalService.isDeleteEvaluatorModalVisible">
+  <dialog class="modal-dialog">
+    <header class="modal-header">
+      <h1 class="modal-title">删除评价者</h1>
+      <div class="modal-dismiss"><span class="icon icon-remove"
+                                       (click)="modalService.dismissDeleteEvaluatorModal()"></span></div>
+    </header>
+    <main class="modal-content">
+      <p>您确定要删除评价者{{evaluator.userName}}吗？</p>
+    </main>
+    <footer class="modal-footer">
+      <button class="btn btn-default" type="button" (click)="modalService.dismissDeleteEvaluatorModal()"
+              [disabled]="isBtnDisabled">取消
+      </button>
+      <button class="btn btn-primary" type="button" (click)="deleteEvaluator()" [disabled]="isBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isBtnDisabled"></span>
+        <span *ngIf="!isBtnDisabled">删除</span>
+        <span *ngIf="isBtnDisabled">正在删除</span>
+      </button>
+    </footer>
+  </dialog>
+</div>

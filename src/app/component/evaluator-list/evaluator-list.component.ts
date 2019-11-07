@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PromptService} from '../../service/prompt.service';
 import {HasteService} from '../../model/util/haste-service';
-import {Evaluatee} from '../../model/evaluatee';
 import {ModalService} from '../../service/modal.service';
 import {Evaluator} from '../../model/evaluator';
 import {Response} from '../../model/dto/response';
@@ -39,15 +38,8 @@ export class EvaluatorListComponent implements OnInit {
     });
   }
 
-  public getNewEvaluatee(evaluators: Array<Evaluator>): void {
-    for (const evaluator of evaluators) {
-      this.evaluators.push(evaluator);
-    }
-  }
-
-  public deleteEvaluatee(evaluator: Evaluator): void {
+  public deleteEvaluator(evaluator: Evaluator): void {
     const index = this.evaluators.indexOf(evaluator);
     this.evaluators.splice(index, 1);
   }
-
 }

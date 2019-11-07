@@ -1,3 +1,35 @@
-<p>
-  evaluation-score-form-list works!
-</p>
+<main class="container">
+  <div class="panel">
+    <p class="candidate">
+      <span></span>
+      <span>考核评价评分表列表</span>
+    </p>
+    <table class="table table-bordered table-hover" style="table-layout: fixed">
+      <thead>
+      <tr>
+        <th>受评者</th>
+        <th>评价者</th>
+        <th>评分表类型</th>
+        <th>完成情况</th>
+        <th>完成时间</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let evaluationScoreForm of evaluationScoreForms">
+        <td>{{evaluationScoreForm.evaluateeName}}</td>
+        <td>{{evaluationScoreForm.evaluatorName}}</td>
+        <td>
+          <span *ngIf="100 === evaluationScoreForm.type">领导班子考核评价</span>
+          <span *ngIf="200 === evaluationScoreForm.type">领导干部考核评价</span>
+          <span *ngIf="300 === evaluationScoreForm.type">专业人才考核评价</span>
+        </td>
+        <td>
+          <span *ngIf="!evaluationScoreForm.complete">未完成</span>
+          <span *ngIf="evaluationScoreForm.complete">已完成</span>
+        </td>
+        <td>{{evaluationScoreForm.completeAt | date: 'yyyy年MM月dd日 HH:mm:ss'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

@@ -24,6 +24,7 @@ export class LeadershipScoreFormInputComponent implements OnInit, HasteCallback<
   private leadershipScoreForm: LeadershipScoreForm;
 
   constructor(private evaluatorService: EvaluatorService, private leadershipScoreFormService: LeadershipScoreFormService, private modalService: ModalService, private promptService: PromptService, private route: ActivatedRoute) {
+    this.evaluator = new Evaluator();
   }
 
   ngOnInit() {
@@ -42,116 +43,108 @@ export class LeadershipScoreFormInputComponent implements OnInit, HasteCallback<
   }
 
   private checkParamsValidity(): boolean {
-    if (null === this.leadershipScoreForm.politicsPerformance1) {
-      this.promptService.pushError('请对政治忠诚进行评分');
+    if (null === this.leadershipScoreForm.politicsQuality1) {
+      this.promptService.pushError('请对政治方向进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.politicsPerformance1 < 1 || this.leadershipScoreForm.politicsPerformance1 > 10) {
-      this.promptService.pushError('政治忠诚分数应在1~10分之间');
+    if (this.leadershipScoreForm.politicsQuality1 < 1 || this.leadershipScoreForm.politicsQuality1 > 10) {
+      this.promptService.pushError('政治方向分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.politicsPerformance2) {
-      this.promptService.pushError('请对政治定力进行评分');
+    if (null === this.leadershipScoreForm.politicsQuality2) {
+      this.promptService.pushError('请对党建工作进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.politicsPerformance2 < 1 || this.leadershipScoreForm.politicsPerformance2 > 10) {
-      this.promptService.pushError('政治定力分数应在1~10分之间');
+    if (this.leadershipScoreForm.politicsQuality2 < 1 || this.leadershipScoreForm.politicsQuality2 > 10) {
+      this.promptService.pushError('党建工作分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.politicsPerformance3) {
-      this.promptService.pushError('请对政治担当进行评分');
+    if (null === this.leadershipScoreForm.politicsQuality3) {
+      this.promptService.pushError('请对社会责任进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.politicsPerformance3 < 1 || this.leadershipScoreForm.politicsPerformance3 > 10) {
-      this.promptService.pushError('政治担当分数应在1~10分之间');
+    if (this.leadershipScoreForm.politicsQuality3 < 1 || this.leadershipScoreForm.politicsQuality3 > 10) {
+      this.promptService.pushError('社会责任分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.politicsPerformance4) {
-      this.promptService.pushError('请对政治能力进行评分');
+    if (null === this.leadershipScoreForm.operatePerformance1) {
+      this.promptService.pushError('请对经济效益进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.politicsPerformance4 < 1 || this.leadershipScoreForm.politicsPerformance4 > 10) {
-      this.promptService.pushError('政治能力分数应在1~10分之间');
+    if (this.leadershipScoreForm.operatePerformance1 < 1 || this.leadershipScoreForm.operatePerformance1 > 10) {
+      this.promptService.pushError('经济效益分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.politicsPerformance5) {
-      this.promptService.pushError('请对政治自律进行评分');
+    if (null === this.leadershipScoreForm.operatePerformance2) {
+      this.promptService.pushError('请对可持续发展进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.politicsPerformance5 < 1 || this.leadershipScoreForm.politicsPerformance5 > 10) {
-      this.promptService.pushError('政治自律分数应在1~10分之间');
+    if (this.leadershipScoreForm.operatePerformance2 < 1 || this.leadershipScoreForm.operatePerformance2 > 10) {
+      this.promptService.pushError('可持续发展分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.abilityAndQuality1) {
-      this.promptService.pushError('请对推动执行能力进行评分');
+    if (null === this.leadershipScoreForm.operatePerformance3) {
+      this.promptService.pushError('请对创新成效进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.abilityAndQuality1 < 1 || this.leadershipScoreForm.abilityAndQuality1 > 10) {
-      this.promptService.pushError('推动执行能力分数应在1~10分之间');
+    if (this.leadershipScoreForm.operatePerformance3 < 1 || this.leadershipScoreForm.operatePerformance3 > 10) {
+      this.promptService.pushError('创新成效分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.abilityAndQuality2) {
-      this.promptService.pushError('请对学习创新能力进行评分');
+    if (null === this.leadershipScoreForm.operatePerformance4) {
+      this.promptService.pushError('请对科学管理进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.abilityAndQuality2 < 1 || this.leadershipScoreForm.abilityAndQuality2 > 10) {
-      this.promptService.pushError('学习创新能力分数应在1~10分之间');
+    if (this.leadershipScoreForm.operatePerformance4 < 1 || this.leadershipScoreForm.operatePerformance4 > 10) {
+      this.promptService.pushError('科学管理分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.abilityAndQuality3) {
-      this.promptService.pushError('请对团队建设能力进行评分');
+    if (null === this.leadershipScoreForm.teamwork1) {
+      this.promptService.pushError('请对发扬民主进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.abilityAndQuality3 < 1 || this.leadershipScoreForm.abilityAndQuality3 > 10) {
-      this.promptService.pushError('团队建设能力分数应在1~10分之间');
+    if (this.leadershipScoreForm.teamwork1 < 1 || this.leadershipScoreForm.teamwork1 > 10) {
+      this.promptService.pushError('发扬民主分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.abilityAndQuality4) {
-      this.promptService.pushError('请对职业操守进行评分');
+    if (null === this.leadershipScoreForm.teamwork2) {
+      this.promptService.pushError('请对整体合力进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.abilityAndQuality4 < 1 || this.leadershipScoreForm.abilityAndQuality4 > 10) {
-      this.promptService.pushError('职业操守分数应在1~10分之间');
+    if (this.leadershipScoreForm.teamwork2 < 1 || this.leadershipScoreForm.teamwork2 > 10) {
+      this.promptService.pushError('整体合力分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.workPerformance1) {
-      this.promptService.pushError('请对履职绩效进行评分');
+    if (null === this.leadershipScoreForm.teamwork3) {
+      this.promptService.pushError('请对运行机制进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.workPerformance1 < 1 || this.leadershipScoreForm.workPerformance1 > 10) {
-      this.promptService.pushError('履职绩效分数应在1~10分之间');
+    if (this.leadershipScoreForm.teamwork3 < 1 || this.leadershipScoreForm.teamwork3 > 10) {
+      this.promptService.pushError('运行机制分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.workPerformance2) {
-      this.promptService.pushError('请对协同成效进行评分');
+    if (null === this.leadershipScoreForm.styleAndImage1) {
+      this.promptService.pushError('请对联系群众进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.workPerformance2 < 1 || this.leadershipScoreForm.workPerformance2 > 10) {
-      this.promptService.pushError('协同成效分数应在1~10分之间');
+    if (this.leadershipScoreForm.styleAndImage1 < 1 || this.leadershipScoreForm.styleAndImage1 > 10) {
+      this.promptService.pushError('联系群众分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.integrity1) {
-      this.promptService.pushError('请对作风建设进行评分');
+    if (null === this.leadershipScoreForm.styleAndImage2) {
+      this.promptService.pushError('请对选人用人进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.integrity1 < 1 || this.leadershipScoreForm.integrity1 > 10) {
-      this.promptService.pushError('作风建设分数应在1~10分之间');
+    if (this.leadershipScoreForm.styleAndImage2 < 1 || this.leadershipScoreForm.styleAndImage2 > 10) {
+      this.promptService.pushError('选人用人分数应在1~10分之间');
       return false;
     }
-    if (null === this.leadershipScoreForm.integrity2) {
+    if (null === this.leadershipScoreForm.styleAndImage3) {
       this.promptService.pushError('请对廉洁自律进行评分');
       return false;
     }
-    if (this.leadershipScoreForm.integrity2 < 1 || this.leadershipScoreForm.integrity2 > 10) {
+    if (this.leadershipScoreForm.styleAndImage3 < 1 || this.leadershipScoreForm.styleAndImage3 > 10) {
       this.promptService.pushError('廉洁自律分数应在1~10分之间');
-      return false;
-    }
-    if (null === this.leadershipScoreForm.integrity3) {
-      this.promptService.pushError('请对一岗双责进行评分');
-      return false;
-    }
-    if (this.leadershipScoreForm.integrity3 < 1 || this.leadershipScoreForm.integrity3 > 10) {
-      this.promptService.pushError('一岗双责分数应在1~10分之间');
       return false;
     }
     return true;

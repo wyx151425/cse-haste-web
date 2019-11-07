@@ -24,6 +24,7 @@ export class ProfessionalScoreFormInputComponent implements OnInit, HasteCallbac
   private professionalScoreForm: ProfessionalScoreForm;
 
   constructor(private evaluatorService: EvaluatorService, private professionalScoreFormService: ProfessionalScoreFormService, private modalService: ModalService, private promptService: PromptService, private route: ActivatedRoute) {
+    this.evaluator = new Evaluator();
   }
 
   ngOnInit() {

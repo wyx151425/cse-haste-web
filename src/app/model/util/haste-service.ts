@@ -17,6 +17,8 @@ export class HasteService<T> {
         return '系统运行错误';
       case 600:
         return '请求参数错误';
+      case 700:
+        return '操作失败';
       case 1000:
         return '用户未注册';
       case 1001:

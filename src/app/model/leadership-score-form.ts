@@ -2,61 +2,57 @@ import {EvaluationScoreForm} from './evaluation-score-form';
 
 export class LeadershipScoreForm extends EvaluationScoreForm {
   /**
-   * 政治忠诚
+   * 政治方向
    */
-  politicsPerformance1: number;
+  politicsQuality1: number;
   /**
-   * 政治定力
+   * 党建工作
    */
-  politicsPerformance2: number;
+  politicsQuality2: number;
   /**
-   * 政治担当
+   * 社会责任
    */
-  politicsPerformance3: number;
+  politicsQuality3: number;
   /**
-   * 政治能力
+   * 经济效益
    */
-  politicsPerformance4: number;
+  operatePerformance1: number;
   /**
-   * 政治自律
+   * 可持续发展
    */
-  politicsPerformance5: number;
+  operatePerformance2: number;
   /**
-   * 推动执行能力
+   * 创新成效
    */
-  abilityAndQuality1: number;
+  operatePerformance3: number;
   /**
-   * 学习创新能力
+   * 科学管理
    */
-  abilityAndQuality2: number;
+  operatePerformance4: number;
   /**
-   * 团队建设能力
+   * 发扬民主
    */
-  abilityAndQuality3: number;
+  teamwork1: number;
   /**
-   * 职业操守
+   * 整体合力
    */
-  abilityAndQuality4: number;
+  teamwork2: number;
   /**
-   * 履职绩效
+   * 运行机制
    */
-  workPerformance1: number;
+  teamwork3: number;
   /**
-   * 协同成效
+   * 联系群众
    */
-  workPerformance2: number;
+  styleAndImage1: number;
   /**
-   * 作风建设
+   * 选人用人
    */
-  integrity1: number;
+  styleAndImage2: number;
   /**
    * 廉洁自律
    */
-  integrity2: number;
-  /**
-   * 一岗双责
-   */
-  integrity3: number;
+  styleAndImage3: number;
 
   constructor() {
     super();

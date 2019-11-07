@@ -25,7 +25,8 @@ export class EvaluationGroupDeleteModalComponent implements OnInit, HasteCallbac
     this.modalService.deleteEvaluationGroupObservable.subscribe((group: EvaluationGroup) => this.evaluationGroup = group);
   }
 
-  public deleteGroup(): void {
+  public deleteEvaluationGroup(): void {
+    this.isBtnDisabled = true;
     this.evaluationGroupService.deleteEvaluationGroup(this.evaluationGroup, this).subscribe();
   }
 

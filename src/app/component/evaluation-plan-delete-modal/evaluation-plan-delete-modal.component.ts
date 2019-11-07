@@ -26,6 +26,7 @@ export class EvaluationPlanDeleteModalComponent implements OnInit, HasteCallback
   }
 
   public deleteEvaluationPlan(): void {
+    this.isBtnDisabled = true;
     this.evaluationPlanService.deleteEvaluationPlan(this.evaluationPlan, this).subscribe();
   }
 
@@ -34,7 +35,7 @@ export class EvaluationPlanDeleteModalComponent implements OnInit, HasteCallback
     this.isBtnDisabled = false;
   }
 
-  onSuccess(plan: EvaluationPlan): void {
+  onSuccess(evaluationPlan: EvaluationPlan): void {
     this.emitter.emit(this.evaluationPlan);
     this.promptService.pushSuccess('删除成功');
     this.modalService.dismissDeleteEvaluationPlanModal();

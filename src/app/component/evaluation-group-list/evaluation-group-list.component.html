@@ -34,7 +34,7 @@
           </button>
           <a routerLink="/evaluationGroup/{{evaluationGroup.id}}/evaluationScoreForm/list"
              *ngIf="200 === evaluationPlan.stage || 300 === evaluationPlan.stage">
-            <button class="btn btn-link" type="button">查看评分</button>
+            <button class="btn btn-link" type="button">查看评分情况</button>
           </a>
         </td>
       </tr>
@@ -44,7 +44,8 @@
       <a routerLink="/evaluationPlan/list">
         <button class="btn btn-primary" type="button">返回</button>
       </a>
-      <button class="btn btn-primary" (click)="modalService.showCreateEvaluationGroupModal(evaluationPlan)" type="button"
+      <button class="btn btn-primary" (click)="modalService.showCreateEvaluationGroupModal(evaluationPlan)"
+              type="button"
               *ngIf="100 == evaluationPlan.stage">添加评分组
       </button>
     </section>

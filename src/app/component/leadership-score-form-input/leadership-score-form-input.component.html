@@ -7,46 +7,30 @@
     <table class="table table-bordered table-reverse table-hover" style="table-layout: fixed">
       <thead>
       <tr>
-        <th colspan="2">政治表现（每项满分10分）</th>
+        <th colspan="2">政治素质（每项满分10分）</th>
       </tr>
       </thead>
       <tbody>
       <tr>
-        <td>政治忠诚</td>
+        <td>政治方向</td>
         <td>
-          <input name="politicsPerformance1" [(ngModel)]="leadershipScoreForm.politicsPerformance1"
+          <input name="politicsQuality1" [(ngModel)]="leadershipScoreForm.politicsQuality1"
                  class="form-control" type="number"/>
           <label>分</label>
         </td>
       </tr>
       <tr>
-        <td>政治定力</td>
+        <td>党建工作</td>
         <td>
-          <input name="politicsPerformance2" [(ngModel)]="leadershipScoreForm.politicsPerformance2"
+          <input name="politicsQuality2" [(ngModel)]="leadershipScoreForm.politicsQuality2"
                  class="form-control" type="number"/>
           <label>分</label>
         </td>
       </tr>
       <tr>
-        <td>政治担当</td>
+        <td>社会责任</td>
         <td>
-          <input name="politicsPerformance3" [(ngModel)]="leadershipScoreForm.politicsPerformance3"
-                 class="form-control" type="number"/>
-          <label>分</label>
-        </td>
-      </tr>
-      <tr>
-        <td>政治能力</td>
-        <td>
-          <input name="politicsPerformance4" [(ngModel)]="leadershipScoreForm.politicsPerformance4"
-                 class="form-control" type="number"/>
-          <label>分</label>
-        </td>
-      </tr>
-      <tr>
-        <td>政治自律</td>
-        <td>
-          <input name="politicsPerformance5" [(ngModel)]="leadershipScoreForm.politicsPerformance5"
+          <input name="politicsQuality3" [(ngModel)]="leadershipScoreForm.politicsQuality3"
                  class="form-control" type="number"/>
           <label>分</label>
         </td>
@@ -56,38 +40,38 @@
     <table class="table table-bordered table-reverse table-hover" style="table-layout: fixed">
       <thead>
       <tr>
-        <th colspan="2">能力素质（每项满分10分）</th>
+        <th colspan="2">经营业绩（每项满分10分）</th>
       </tr>
       </thead>
       <tbody>
       <tr>
-        <td>推动执行能力</td>
+        <td>经济效益</td>
         <td>
-          <input name="abilityAndQuality1" [(ngModel)]="leadershipScoreForm.abilityAndQuality1" class="form-control"
+          <input name="operatePerformance1" [(ngModel)]="leadershipScoreForm.operatePerformance1"
+                 class="form-control" type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      <tr>
+        <td>可持续发展</td>
+        <td>
+          <input name="operatePerformance2" [(ngModel)]="leadershipScoreForm.operatePerformance2"
+                 class="form-control" type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      <tr>
+        <td>创新成效</td>
+        <td>
+          <input name="operatePerformance3" [(ngModel)]="leadershipScoreForm.operatePerformance3" class="form-control"
                  type="number"/>
           <label>分</label>
         </td>
       </tr>
       <tr>
-        <td>学习创新能力</td>
+        <td>科学管理</td>
         <td>
-          <input name="abilityAndQuality2" [(ngModel)]="leadershipScoreForm.abilityAndQuality2" class="form-control"
-                 type="number"/>
-          <label>分</label>
-        </td>
-      </tr>
-      <tr>
-        <td>团队建设能力</td>
-        <td>
-          <input name="abilityAndQuality3" [(ngModel)]="leadershipScoreForm.abilityAndQuality3" class="form-control"
-                 type="number"/>
-          <label>分</label>
-        </td>
-      </tr>
-      <tr>
-        <td>职业操守</td>
-        <td>
-          <input name="abilityAndQuality4" [(ngModel)]="leadershipScoreForm.abilityAndQuality4" class="form-control"
+          <input name="operatePerformance4" [(ngModel)]="leadershipScoreForm.operatePerformance4" class="form-control"
                  type="number"/>
           <label>分</label>
         </td>
@@ -97,22 +81,30 @@
     <table class="table table-bordered table-reverse table-hover" style="table-layout: fixed">
       <thead>
       <tr>
-        <th colspan="2">工作业绩（每项满分10分）</th>
+        <th colspan="2">团队协作（每项满分10分）</th>
       </tr>
       </thead>
-      <tbody>
       <tr>
-        <td>履职绩效</td>
+        <td>发扬民主</td>
         <td>
-          <input name="workPerformance1" [(ngModel)]="leadershipScoreForm.workPerformance1" class="form-control"
+          <input name="teamwork1" [(ngModel)]="leadershipScoreForm.teamwork1" class="form-control"
                  type="number"/>
           <label>分</label>
         </td>
       </tr>
       <tr>
-        <td>协同成效</td>
+        <td>整体合力</td>
         <td>
-          <input name="workPerformance2" [(ngModel)]="leadershipScoreForm.workPerformance2" class="form-control"
+          <input name="teamwork2" [(ngModel)]="leadershipScoreForm.teamwork2" class="form-control"
+                 type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      <tbody>
+      <tr>
+        <td>运行机制</td>
+        <td>
+          <input name="teamwork3" [(ngModel)]="leadershipScoreForm.teamwork3" class="form-control"
                  type="number"/>
           <label>分</label>
         </td>
@@ -122,47 +114,50 @@
     <table class="table table-bordered table-reverse table-hover" style="table-layout: fixed">
       <thead>
       <tr>
-        <th colspan="2">廉洁从业和“一岗双责”（每项满分10分）</th>
+        <th colspan="2">作风形象（每项满分10分）</th>
       </tr>
       </thead>
       <tbody>
       <tr>
-        <td>作风建设</td>
+        <td>联系群众</td>
         <td>
-          <input name="integrity1" [(ngModel)]="leadershipScoreForm.integrity1" class="form-control" type="number"/>
+          <input name="styleAndImage1" [(ngModel)]="leadershipScoreForm.styleAndImage1" class="form-control"
+                 type="number"/>
+          <label>分</label>
+        </td>
+      </tr>
+      <tr>
+        <td>选人用人</td>
+        <td>
+          <input name="styleAndImage2" [(ngModel)]="leadershipScoreForm.styleAndImage2" class="form-control"
+                 type="number"/>
           <label>分</label>
         </td>
       </tr>
       <tr>
         <td>廉洁自律</td>
         <td>
-          <input name="integrity2" [(ngModel)]="leadershipScoreForm.integrity2" class="form-control" type="number"/>
-          <label>分</label>
-        </td>
-      </tr>
-      <tr>
-        <td>一岗双责</td>
-        <td>
-          <input name="integrity3" [(ngModel)]="leadershipScoreForm.integrity3" class="form-control" type="number"/>
+          <input name="styleAndImage3" [(ngModel)]="leadershipScoreForm.styleAndImage3" class="form-control"
+                 type="number"/>
           <label>分</label>
         </td>
       </tr>
       </tbody>
     </table>
     <section>
-      <span style="font-weight: 700">评审方法：</span><span>评委请根据《2019年度下属公司和中层干部综合考核评价办法》，对受评者的政治表现、能力素质、工作业绩、廉洁从业和“一岗双责”进行评分，每项1~10分（10~9分为表现突出，8~7分为表现较好，6~5分为表现一般，4分以下为表现较差）。</span>
+      <span style="font-weight: 700">评审方法：</span><span>评委请根据《2018年度下属公司领导班子综合考核评价办法》，对受评者的政治素质、经营业绩、团队协作、作风形象进行评分，每项1~10分（10~9分为表现突出，8~7分为表现较好，6~5分为表现一般，4分以下为表现较差）。</span>
     </section>
     <section class="btn-group">
       <a routerLink="/user/{{evaluator.userId}}/evaluationScoreForm/list">
         <button class="btn btn-primary" type="button">返回</button>
       </a>
-      <button class="btn btn-primary" type="button" *ngIf="!leaderCadreScoreForm.complete"
+      <button class="btn btn-primary" type="button" *ngIf="!leadershipScoreForm.complete"
               (click)="submitLeadershipScoreFormScore()" [disabled]="isSubmitBtnDisabled || isSaveBtnDisabled">
         <span class="icon icon-refresh rotate" *ngIf="isSubmitBtnDisabled"></span>
         <span *ngIf="!isSubmitBtnDisabled">提交</span>
         <span *ngIf="isSubmitBtnDisabled">正在提交</span>
       </button>
-      <button class="btn btn-primary" type="button" *ngIf="!leaderCadreScoreForm.complete"
+      <button class="btn btn-primary" type="button" *ngIf="!leadershipScoreForm.complete"
               (click)="saveLeadershipScoreFormScore()" [disabled]="isSaveBtnDisabled || isSubmitBtnDisabled">
         <span class="icon icon-refresh rotate" *ngIf="isSaveBtnDisabled"></span>
         <span *ngIf="!isSaveBtnDisabled">暂存</span>

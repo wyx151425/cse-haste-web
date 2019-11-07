@@ -39,12 +39,6 @@ export class EvaluateeListComponent implements OnInit {
     });
   }
 
-  public getNewEvaluatee(evaluatees: Array<Evaluatee>): void {
-    for (const evaluatee of evaluatees) {
-      this.evaluatees.push(evaluatee);
-    }
-  }
-
   public deleteEvaluatee(evaluatee: Evaluatee): void {
     const index = this.evaluatees.indexOf(evaluatee);
     this.evaluatees.splice(index, 1);

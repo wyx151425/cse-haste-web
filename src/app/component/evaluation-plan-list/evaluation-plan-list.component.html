@@ -23,8 +23,8 @@
           <span *ngIf="200 === evaluationPlan.type">领导干部考核评价</span>
           <span *ngIf="300 === evaluationPlan.type">专业人才考核评价</span>
         </td>
-        <td>{{evaluationPlan.startAt}}</td>
-        <td>{{evaluationPlan.completeAt}}</td>
+        <td>{{evaluationPlan.startAt | date: 'yyyy年MM月dd日 HH:mm:ss'}}</td>
+        <td>{{evaluationPlan.completeAt | date: 'yyyy年MM月dd日 HH:mm:ss'}}</td>
         <td>
           <span *ngIf="100 == evaluationPlan.stage">未启动</span>
           <span *ngIf="200 == evaluationPlan.stage">进行中</span>

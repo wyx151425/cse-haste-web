@@ -49,8 +49,13 @@ export class EvaluateeSelectListComponent implements OnInit, HasteCallback<Evalu
   }
 
   public deleteEvaluatee(evaluatee: Evaluatee): void {
-    const index = this.users.indexOf(evaluatee.user);
-    this.users.splice(index, 1);
+    for (const user of this.users) {
+      if (evaluatee.userId === user.id) {
+        const index = this.users.indexOf(user);
+        this.users.splice(index, 1);
+        break;
+      }
+    }
   }
 
   onError(message: string): void {

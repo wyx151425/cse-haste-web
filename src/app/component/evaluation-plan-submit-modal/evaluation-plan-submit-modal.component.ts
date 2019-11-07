@@ -22,10 +22,11 @@ export class EvaluationPlanSubmitModalComponent implements OnInit, HasteCallback
   }
 
   ngOnInit() {
-    this.modalService.submitEvaluationPlanObservable.subscribe((plan: EvaluationPlan) => this.evaluationPlan = plan);
+    this.modalService.submitEvaluationPlanObservable.subscribe((evaluationPlan: EvaluationPlan) => this.evaluationPlan = evaluationPlan);
   }
 
   public submitEvaluationPlan(): void {
+    this.isBtnDisabled = true;
     this.evaluationPlanService.submitEvaluationPlan(this.evaluationPlan, this).subscribe();
   }
 
@@ -34,8 +35,8 @@ export class EvaluationPlanSubmitModalComponent implements OnInit, HasteCallback
     this.isBtnDisabled = false;
   }
 
-  onSuccess(plan: EvaluationPlan): void {
-    this.emitter.emit(plan);
+  onSuccess(evaluationPlan: EvaluationPlan): void {
+    this.emitter.emit(evaluationPlan);
     this.promptService.pushSuccess('提交成功');
     this.modalService.dismissSubmitEvaluationPlanModal();
     this.isBtnDisabled = false;
