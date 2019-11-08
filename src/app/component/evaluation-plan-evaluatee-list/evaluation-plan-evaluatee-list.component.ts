@@ -42,4 +42,9 @@ export class EvaluationPlanEvaluateeListComponent implements OnInit {
     const index = this.evaluatees.indexOf(evaluatee);
     this.evaluatees.splice(index, 1);
   }
+
+
+  public exportEvaluationScoreForm(evaluatee: Evaluatee): void {
+
+  }
 }

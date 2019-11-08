@@ -45,6 +45,7 @@ import { EvaluatorDeleteModalComponent } from './component/evaluator-delete-moda
 import { EvaluateeDeleteModalComponent } from './component/evaluatee-delete-modal/evaluatee-delete-modal.component';
 import { EvaluationPlanEvaluateeListComponent } from './component/evaluation-plan-evaluatee-list/evaluation-plan-evaluatee-list.component';
 import { EvaluationPlanEvaluateeSelectComponent } from './component/evaluation-plan-evaluatee-select/evaluation-plan-evaluatee-select.component';
+import { DepartmentCadreScoreFormInputComponent } from './component/department-cadre-score-form-input/department-cadre-score-form-input.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { EvaluationPlanEvaluateeSelectComponent } from './component/evaluation-p
     EvaluatorDeleteModalComponent,
     EvaluateeDeleteModalComponent,
     EvaluationPlanEvaluateeListComponent,
-    EvaluationPlanEvaluateeSelectComponent
+    EvaluationPlanEvaluateeSelectComponent,
+    DepartmentCadreScoreFormInputComponent
   ],
   imports: [
     BrowserModule,

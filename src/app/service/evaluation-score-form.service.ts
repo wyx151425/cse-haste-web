@@ -35,4 +35,6 @@ export class EvaluationScoreFormService extends HasteService<EvaluationScoreForm
       catchError(this.handleError<Response<Array<EvaluationScoreForm>>>('get evaluation score forms by evaluation group id'))
     );
   }
+
+  public exportEvaluationScoreFormsByEvaluatee()
 }

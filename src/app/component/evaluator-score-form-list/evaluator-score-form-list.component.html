@@ -17,9 +17,10 @@
       <tr>
         <td>评分表类型</td>
         <td>
-          <span *ngIf="100 === evaluationScoreForm.type">领导班子考核评价</span>
-          <span *ngIf="200 === evaluationScoreForm.type">领导干部考核评价</span>
-          <span *ngIf="300 === evaluationScoreForm.type">专业人才考核评价</span>
+          <span *ngIf="100 === evaluationScoreForm.type">领导班子评分表</span>
+          <span *ngIf="200 === evaluationScoreForm.type">领导班子成员或中层干部（员工测评）评分表</span>
+          <span *ngIf="300 === evaluationScoreForm.type">中层干部（公司领导和考评组）评分表</span>
+          <span *ngIf="400 === evaluationScoreForm.type">专业人才评分表</span>
         </td>
       </tr>
       <tr>
@@ -42,7 +43,10 @@
           <a routerLink="/leaderCadreScoreForm/{{evaluationScoreForm.id}}/input" *ngIf="200 === evaluationScoreForm.type">
             <button class="btn btn-link" type="button">评分</button>
           </a>
-          <a routerLink="/professionalScoreForm/{{evaluationScoreForm.id}}/input" *ngIf="300 === evaluationScoreForm.type">
+          <a routerLink="/departmentCadreScoreForm/{{evaluationScoreForm.id}}/input" *ngIf="300 === evaluationScoreForm.type">
+            <button class="btn btn-link" type="button">评分</button>
+          </a>
+          <a routerLink="/professionalScoreForm/{{evaluationScoreForm.id}}/input" *ngIf="400 === evaluationScoreForm.type">
             <button class="btn btn-link" type="button">评分</button>
           </a>
         </td>

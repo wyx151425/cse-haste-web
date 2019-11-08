@@ -8,17 +8,24 @@
       <thead>
       <tr>
         <th>名称</th>
+        <th *ngIf="300 === evaluationPlan.type">评分表类型</th>
         <th>完成情况</th>
+        <th>完成时间</th>
         <th>操作</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let evaluationGroup of evaluationGroups">
         <td>{{evaluationGroup.name}}</td>
+        <td *ngIf="300 === evaluationPlan.type">
+          <span *ngIf="300 === evaluationGroup.evaluationScoreFormType">中层干部评分表（公司领导和考评组）</span>
+          <span *ngIf="200 === evaluationGroup.evaluationScoreFormType">中层干部评分表（员工测评）</span>
+        </td>
         <td>
           <span *ngIf="!evaluationGroup.complete">未完成</span>
           <span *ngIf="evaluationGroup.complete">已完成</span>
         </td>
+        <td>{{evaluationGroup.completeAt | date: 'yyyy年MM月dd日 HH:mm:ss'}}</td>
         <td>
           <a routerLink="/evaluationGroup/{{evaluationGroup.id}}/evaluatee/list"
              *ngIf="100 === evaluationPlan.stage && 100 !== evaluationPlan.type">

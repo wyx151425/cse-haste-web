@@ -10,7 +10,7 @@
         <th>姓名</th>
         <th>用户名</th>
         <th>密码</th>
-        <th *ngIf="100 === evaluationPlan.stage">操作</th>
+        <th>操作</th>
       </tr>
       </thead>
       <tbody>
@@ -18,8 +18,10 @@
         <td>{{evaluatee.user.name}}</td>
         <td>{{evaluatee.user.username}}</td>
         <td>{{evaluatee.user.password}}</td>
-        <td *ngIf="100 === evaluationPlan.stage">
-          <button class="btn btn-link" type="button" (click)="modalService.showDeleteEvaluateeModal(evaluatee)">删除
+        <td>
+          <button  *ngIf="100 === evaluationPlan.stage" class="btn btn-link" type="button" (click)="modalService.showDeleteEvaluateeModal(evaluatee)">删除
+          </button>
+          <button  *ngIf="300 === evaluationPlan.stage" class="btn btn-link" type="button" (click)="exportEvaluationScoreForm(evaluatee)">导出
           </button>
         </td>
       </tr>

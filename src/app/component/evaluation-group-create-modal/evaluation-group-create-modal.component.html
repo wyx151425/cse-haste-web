@@ -12,6 +12,18 @@
           <label class="form-label">名称</label>
           <input #name (input)="evaluationGroup.name = name.value" class="form-control" type="text"/>
         </div>
+        <div class="form-group">
+          <label class="form-label">类型</label>
+          <select #type (change)="evaluationGroup.evaluationScoreFormType = type.value" class="form-control">
+            <option selected disabled value="0">请选择</option>
+            <!--<option value="100">领导班子评分表</option>-->
+            <!--<option value="200">领导干部评分表</option>-->
+            <!--<option value="300">中层干部评分表</option>-->
+            <!--<option value="400">专业人才评分表</option>-->
+            <option value="300">中层干部评分表（公司领导和考评组）</option>
+            <option value="200">中层干部评分表（员工测评）</option>
+          </select>
+        </div>
       </form>
     </main>
     <footer class="modal-footer">

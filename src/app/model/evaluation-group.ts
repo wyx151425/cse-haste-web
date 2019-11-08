@@ -12,6 +12,11 @@ export class EvaluationGroup extends HasteEntity {
    * 完成标志
    */
   complete: boolean;
+  completeAt: string;
+  /**
+   * 评分表类型
+   */
+  evaluationScoreFormType: number;
   /**
    * 考核评价计划
    */

@@ -29,6 +29,8 @@ import {EvaluationPlanEvaluateeListComponent} from './component/evaluation-plan-
 import {EvaluationPlanEvaluateesResolverService} from './resolver/evaluation-plan-evaluatees-resolver.service';
 import {EvaluationPlanNotSelectEvaluateesResolverService} from './resolver/evaluation-plan-not-select-evaluatees-resolver.service';
 import {EvaluationPlanEvaluateeSelectComponent} from './component/evaluation-plan-evaluatee-select/evaluation-plan-evaluatee-select.component';
+import {DepartmentCadreScoreFormResolverService} from './resolver/department-cadre-score-form-resolver.service';
+import {DepartmentCadreScoreFormInputComponent} from './component/department-cadre-score-form-input/department-cadre-score-form-input.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'evaluationPlan/list', pathMatch: 'full', canActivate: [UserGuard]},
@@ -105,6 +107,12 @@ const routes: Routes = [
     component: LeaderCadreScoreFormInputComponent,
     canActivate: [UserGuard],
     resolve: {response: LeaderCadreScoreFormResolverService}
+  },
+  {
+    path: 'departmentCadreScoreForm/:departmentCadreScoreFormId/input',
+    component: DepartmentCadreScoreFormInputComponent,
+    canActivate: [UserGuard],
+    resolve: {response: DepartmentCadreScoreFormResolverService}
   },
   {
     path: 'professionalScoreForm/:professionalScoreFormId/input',
