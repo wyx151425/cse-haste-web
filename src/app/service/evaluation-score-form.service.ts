@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Response} from '../model/dto/response';
 import {HasteCallback} from '../model/util/haste-callback';
 import {HasteService} from '../model/util/haste-service';
 import {EvaluationScoreForm} from '../model/evaluation-score-form';
+import {Evaluatee} from '../model/evaluatee';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,8 @@ export class EvaluationScoreFormService extends HasteService<EvaluationScoreForm
     );
   }
 
-  public exportEvaluationScoreFormsByEvaluatee()
+  public exportEvaluationScoreFormsByEvaluatee(evaluatee: Evaluatee): Observable<HttpResponse<any>> {
+    const url = `${this.evaluationScoreFormsUrl}/export`;
+    return this.httpClient.post<HttpResponse<any>>(url, evaluatee, {observe: 'response'});
+  }
 }

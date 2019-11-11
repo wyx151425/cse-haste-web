@@ -38,6 +38,9 @@
           <a routerLink="/evaluationPlan/{{evaluationPlan.id}}/evaluatee/list"  *ngIf="100 !== evaluationPlan.type">
             <button class="btn btn-link" type="button">受评者管理</button>
           </a>
+          <a routerLink="/evaluationPlan/{{evaluationPlan.id}}/evaluatee/list"  *ngIf="100 === evaluationPlan.type && 300 === evaluationPlan.stage">
+            <button class="btn btn-link" type="button">受评者管理</button>
+          </a>
           <button class="btn btn-link" *ngIf="100 == evaluationPlan.stage"
                   (click)="modalService.showStartEvaluationPlanModal(evaluationPlan)">启动
           </button>
