@@ -2,14 +2,13 @@
   <div class="panel">
     <p class="candidate">
       <span>{{evaluationGroup.name}}</span>
-      <span>受评者列表</span>
+      <span>评价者列表</span>
     </p>
     <table class="table table-bordered table-hover">
       <thead>
       <tr>
         <th>姓名</th>
         <th>用户名</th>
-        <th>密码</th>
         <th *ngIf="!evaluationGroup.complete">操作</th>
       </tr>
       </thead>
@@ -17,7 +16,6 @@
       <tr *ngFor="let evaluator of evaluators">
         <td>{{evaluator.user.name}}</td>
         <td>{{evaluator.user.username}}</td>
-        <td>{{evaluator.user.password}}</td>
         <td *ngIf="!evaluationGroup.complete">
           <button class="btn btn-link" type="button" (click)="modalService.showDeleteEvaluatorModal(evaluator)">删除
           </button>

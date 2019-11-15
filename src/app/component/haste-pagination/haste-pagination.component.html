@@ -1,0 +1,14 @@
+<footer class="pagination">
+  <nav class="pagination-nav">
+    <button class="left" type="button" [disabled]="!pageInfo.hasPreviousPage" (click)="queryPreviousPage()"><span class="icon icon-menu-left"></span></button>
+    <button type="button"><span>{{pageInfo.pageNum}}</span></button>
+    <button class="right" type="button" [disabled]="!pageInfo.hasNextPage" (click)="queryNextPage()"><span class="icon icon-menu-right"></span></button>
+  </nav>
+  <section class="pagination-query">
+    <label class="pagination-query-label">共{{pageInfo.pages}}页</label>
+    <input class="pagination-query-control" name="pageNum" [(ngModel)]="pageNum" type="text"/>
+    <label class="pagination-query-action" (click)="queryByPagination()">
+      <span class="icon icon-search"></span>
+    </label>
+  </section>
+</footer>

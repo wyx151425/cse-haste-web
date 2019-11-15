@@ -1,15 +1,22 @@
 <main class="container">
   <div class="panel">
-    <p class="candidate">
-      <span>{{evaluationPlan.name}}</span>
-      <span>未选择评价者列表</span>
-    </p>
+    <div class="candidate" style="height: 36px; line-height: 36px">
+      <span>{{evaluationPlan.name}} - 受评者选择</span>
+      <section class="filter">
+        <div class="filter-group">
+          <input class="filter-control" name="queryName" [(ngModel)]="queryName" type="text" placeholder="查询受评者"/>
+          <label class="filter-action" (click)="queryEvaluatees()"><span class="icon icon-search"></span></label>
+        </div>
+        <a routerLink="/evaluationPlan/{{evaluationPlan.id}}/evaluatee/list" style="margin-left: 10px">
+          <button class="btn btn-primary" type="button">返回</button>
+        </a>
+      </section>
+    </div>
     <table class="table table-bordered table-hover">
       <thead>
       <tr>
         <th>姓名</th>
         <th>用户名</th>
-        <th>密码</th>
         <th *ngIf="100 === evaluationPlan.stage">操作</th>
       </tr>
       </thead>
@@ -17,17 +24,11 @@
       <tr *ngFor="let user of users">
         <td>{{user.name}}</td>
         <td>{{user.username}}</td>
-        <td>{{user.password}}</td>
         <td *ngIf="100 === evaluationPlan.stage">
           <button class="btn btn-link" type="button" (click)="addEvaluatee(user)">添加</button>
         </td>
       </tr>
       </tbody>
     </table>
-    <section class="btn-group">
-      <a routerLink="/evaluationPlan/{{evaluationPlan.id}}/evaluatee/list">
-        <button class="btn btn-primary" type="button">返回</button>
-      </a>
-    </section>
   </div>
 </main>

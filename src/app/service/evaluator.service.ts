@@ -59,4 +59,12 @@ export class EvaluatorService extends HasteService<Evaluator | User> {
       catchError(this.handleError<Response<Array<User>>>('get not select evaluators by evaluation group'))
     );
   }
+
+  public getNotSelectEvaluatorsByEvaluationGroupAndName(evaluationGroupId: number, name: string, callback: HasteCallback<Array<User>>): Observable<Response<Array<User>>> {
+    const url = `${this.evaluationGroupsUrl}/${evaluationGroupId}/notSelectEvaluators?name=${name}`;
+    return this.httpClient.get<Response<Array<User>>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<Array<User>>>('get not select evaluators by evaluation group'))
+    );
+  }
 }

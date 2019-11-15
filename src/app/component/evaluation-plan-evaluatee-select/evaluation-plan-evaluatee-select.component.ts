@@ -18,6 +18,7 @@ import {EvaluationPlan} from '../../model/evaluation-plan';
 })
 export class EvaluationPlanEvaluateeSelectComponent implements OnInit, HasteCallback<Evaluatee> {
 
+  private queryName = '';
   private evaluationPlan: EvaluationPlan;
   private users: Array<User>;
 
@@ -56,6 +57,14 @@ export class EvaluationPlanEvaluateeSelectComponent implements OnInit, HasteCall
         break;
       }
     }
+  }
+
+  public queryEvaluatees(): void {
+    this.evaluateeService.getNotSelectEvaluateesByEvaluationPlanAndName(this.evaluationPlan.id, this.queryName, null).subscribe(response => {
+      if (200 === response.statusCode) {
+        this.users = response.data;
+      }
+    });
   }
 
   onError(message: string): void {

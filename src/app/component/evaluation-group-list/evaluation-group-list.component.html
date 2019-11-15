@@ -32,9 +32,12 @@
             <button class="btn btn-link" type="button">管理受评者</button>
           </a>
           <a routerLink="/evaluationGroup/{{evaluationGroup.id}}/evaluator/list"
-             *ngIf="100 === evaluationPlan.stage">
+             *ngIf="300 !== evaluationPlan.stage">
             <button class="btn btn-link" type="button">管理评价者</button>
           </a>
+          <button class="btn btn-link" type="button"
+                  (click)="modalService.showUpdateEvaluationGroupNameModal(evaluationGroup)">修改
+          </button>
           <button class="btn btn-link" type="button"
                   (click)="modalService.showDeleteEvaluationGroupModal(evaluationGroup)"
                   *ngIf="100 == evaluationPlan.stage">删除
@@ -60,3 +63,4 @@
 </main>
 <app-evaluation-group-create-modal (emitter)="getNewEvaluationGroup($event)"></app-evaluation-group-create-modal>
 <app-evaluation-group-delete-modal (emitter)="deleteEvaluationGroup($event)"></app-evaluation-group-delete-modal>
+<app-evaluation-group-name-update-modal></app-evaluation-group-name-update-modal>

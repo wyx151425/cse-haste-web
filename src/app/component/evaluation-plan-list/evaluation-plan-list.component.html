@@ -20,9 +20,9 @@
         <td>{{evaluationPlan.name}}</td>
         <td>
           <span *ngIf="100 === evaluationPlan.type">领导班子考核评价</span>
-          <span *ngIf="200 === evaluationPlan.type">领导干部考核评价</span>
+          <span *ngIf="200 === evaluationPlan.type">领导班子成员考核评价</span>
           <span *ngIf="300 === evaluationPlan.type">中层干部综合测评</span>
-          <span *ngIf="400 === evaluationPlan.type">专业人才综合测评</span>
+          <span *ngIf="400 === evaluationPlan.type">高级专业人才综合测评</span>
         </td>
         <td>{{evaluationPlan.startAt | date: 'yyyy年MM月dd日 HH:mm:ss'}}</td>
         <td>{{evaluationPlan.completeAt | date: 'yyyy年MM月dd日 HH:mm:ss'}}</td>
@@ -55,6 +55,9 @@
       </tbody>
     </table>
     <section class="btn-group">
+      <a routerLink="/user/manage/list">
+        <button class="btn btn-primary" type="button">用户管理</button>
+      </a>
       <button class="btn btn-primary" type="button" (click)="modalService.showImportUserModal()">导入用户</button>
       <button class="btn btn-primary" type="button" (click)="modalService.showCreateEvaluationPlanModal()">创建计划</button>
     </section>

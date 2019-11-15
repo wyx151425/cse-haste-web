@@ -18,6 +18,7 @@ import {HasteCallback} from '../../model/util/haste-callback';
 })
 export class EvaluationGroupEvaluatorSelectComponent implements OnInit, HasteCallback<Evaluator> {
 
+  private queryName = '';
   private evaluationGroup: EvaluationGroup;
   private users: Array<User>;
 
@@ -57,6 +58,14 @@ export class EvaluationGroupEvaluatorSelectComponent implements OnInit, HasteCal
         break;
       }
     }
+  }
+
+  public queryEvaluators(): void {
+    this.evaluatorService.getNotSelectEvaluatorsByEvaluationGroupAndName(this.evaluationGroup.id, this.queryName, null).subscribe(response => {
+      if (200 === response.statusCode) {
+        this.users = response.data;
+      }
+    });
   }
 
   onError(message: string): void {

@@ -17,6 +17,7 @@ import {HttpResponse} from '@angular/common/http';
 })
 export class EvaluationPlanEvaluateeListComponent implements OnInit {
 
+  private queryName: string;
   private evaluationPlan: EvaluationPlan;
   private evaluatees: Array<Evaluatee>;
 
@@ -44,7 +45,6 @@ export class EvaluationPlanEvaluateeListComponent implements OnInit {
     const index = this.evaluatees.indexOf(evaluatee);
     this.evaluatees.splice(index, 1);
   }
-
 
   public exportEvaluationScoreForm(evaluatee: Evaluatee): void {
     this.evaluationScoreFormService.exportEvaluationScoreFormsByEvaluatee(evaluatee).subscribe((response: HttpResponse<any>) => {

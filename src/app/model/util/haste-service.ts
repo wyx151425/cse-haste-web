@@ -1,6 +1,7 @@
 import {Observable, of} from 'rxjs';
 import {Response} from '../dto/response';
 import {HasteCallback} from './haste-callback';
+import {PageInfo} from './page-info';
 
 export class HasteService<T> {
 
@@ -47,7 +48,7 @@ export class HasteService<T> {
    * @param {Response<any>} response
    * @param {HasteCallback<any>} callback
    */
-  protected handleResponse(response: Response<T | Array<T>>, callback: HasteCallback<T | Array<T>>) {
+  protected handleResponse(response: Response<T | Array<T> | PageInfo<T>>, callback: HasteCallback<T | Array<T> | PageInfo<T>>) {
     if (null != callback) {
       if (200 === response.statusCode) {
         callback.onSuccess(response.data);

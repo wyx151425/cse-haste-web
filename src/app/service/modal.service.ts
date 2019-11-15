@@ -20,6 +20,8 @@ export class ModalService {
   public isSubmitEvaluationPlanModalVisible = false;
   public isCreateEvaluationGroupModalVisible = false;
   public isDeleteEvaluationGroupModalVisible = false;
+  public isUpdateEvaluationGroupNameModalVisible = false;
+  public isUpdateUserPasswordModalVisible = false;
   public isAddEvaluateeModalVisible = false;
   public isDeleteEvaluateeModalVisible = false;
   public isAddEvaluatorModalVisible = false;
@@ -41,6 +43,12 @@ export class ModalService {
 
   private deleteEvaluationGroupSource = new Subject();
   public deleteEvaluationGroupObservable = this.deleteEvaluationGroupSource.asObservable();
+
+  private updateEvaluationGroupNameSource = new Subject();
+  public updateEvaluationGroupNameObservable = this.updateEvaluationGroupNameSource.asObservable();
+
+  private updateUserPasswordSource = new Subject();
+  public updateUserPasswordObservable = this.updateUserPasswordSource.asObservable();
 
   private addEvaluateeSource = new Subject();
   public addEvaluateeObservable = this.addEvaluateeSource.asObservable();
@@ -127,6 +135,24 @@ export class ModalService {
 
   public dismissDeleteEvaluationGroupModal(): void {
     this.isDeleteEvaluationGroupModalVisible = false;
+  }
+
+  public showUpdateEvaluationGroupNameModal(evaluationGroup: EvaluationGroup): void {
+    this.updateEvaluationGroupNameSource.next(evaluationGroup);
+    this.isUpdateEvaluationGroupNameModalVisible = true;
+  }
+
+  public dismissUpdateEvaluationGroupNameModal(): void {
+    this.isUpdateEvaluationGroupNameModalVisible = false;
+  }
+
+  public showUpdateUserPasswordModal(user: User): void {
+    this.updateUserPasswordSource.next(user);
+    this.isUpdateUserPasswordModalVisible = true;
+  }
+
+  public dismissUpdateUserPasswordModal(): void {
+    this.isUpdateUserPasswordModalVisible = false;
   }
 
   public showAddEvaluateeModal(evaluationGroup: EvaluationGroup): void {

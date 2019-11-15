@@ -1,0 +1,36 @@
+<main class="container">
+  <div class="panel">
+    <p class="candidate">
+      <span>综合考核评价系统</span>
+      <span>用户管理列表</span>
+    </p>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>姓名</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.name}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.password}}</td>
+        <td>
+          <button class="btn btn-link" type="button" (click)="modalService.showUpdateUserPasswordModal(user)">修改密码
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <app-haste-pagination [pageInfo]="pageInfo" (emitter)="getUsers($event)"></app-haste-pagination>
+    <section class="btn-group">
+      <a routerLink="/evaluationPlan/list">
+        <button class="btn btn-primary" type="button">返回</button>
+      </a>
+    </section>
+  </div>
+</main>
+<app-user-password-update-modal></app-user-password-update-modal>

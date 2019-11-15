@@ -9,7 +9,6 @@
       <tr>
         <th>姓名</th>
         <th>用户名</th>
-        <th>密码</th>
         <th>操作</th>
       </tr>
       </thead>
@@ -17,7 +16,6 @@
       <tr *ngFor="let evaluatee of evaluatees">
         <td>{{evaluatee.userName}}</td>
         <td>{{evaluatee.user.username}}</td>
-        <td>{{evaluatee.user.password}}</td>
         <td>
           <button  *ngIf="100 === evaluationPlan.stage" class="btn btn-link" type="button" (click)="modalService.showDeleteEvaluateeModal(evaluatee)">删除
           </button>

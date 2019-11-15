@@ -33,9 +33,11 @@ export class EvaluationGroupCreateModalComponent implements OnInit {
       this.promptService.pushWarning('请填写考核评价评分组的名称');
       return;
     }
-    if (null === this.evaluationGroup.evaluationScoreFormType || 0 === this.evaluationGroup.evaluationScoreFormType) {
-      this.promptService.pushWarning('请选择评分表的类型');
-      return;
+    if (300 === this.evaluationPlan.type) {
+      if (null === this.evaluationGroup.evaluationScoreFormType || 0 === this.evaluationGroup.evaluationScoreFormType) {
+        this.promptService.pushWarning('请选择评分表的类型');
+        return;
+      }
     }
     this.isBtnDisabled = true;
     this.evaluationGroup.evaluationPlan = this.evaluationPlan;

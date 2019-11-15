@@ -1,0 +1,32 @@
+<div class="modal" *ngIf="modalService.isUpdateEvaluationGroupNameModalVisible">
+  <dialog class="modal-dialog">
+    <header class="modal-header">
+      <h1 class="modal-title">修改考核评价评分组名称</h1>
+      <div class="modal-dismiss">
+        <span class="icon icon-remove" (click)="modalService.dismissUpdateEvaluationGroupNameModal()"></span>
+      </div>
+    </header>
+    <main class="modal-content">
+      <form class="form-horizontal form-horizontal-3">
+        <div class="form-group">
+          <label class="form-label">原名称</label>
+          <p class="form-control">{{evaluationGroup.name}}</p>
+        </div>
+        <div class="form-group">
+          <label class="form-label">新名称</label>
+          <input #name (input)="evaluationGroupName = name.value" class="form-control" type="text"/>
+        </div>
+      </form>
+    </main>
+    <footer class="modal-footer">
+      <button class="btn btn-default" type="button" (click)="modalService.dismissUpdateEvaluationGroupNameModal()"
+              [disabled]="isBtnDisabled">取消
+      </button>
+      <button class="btn btn-primary" type="button" (click)="updateEvaluationGroupName()" [disabled]="isBtnDisabled">
+        <span class="icon icon-refresh rotate" *ngIf="isBtnDisabled"></span>
+        <span *ngIf="!isBtnDisabled">保存</span>
+        <span *ngIf="isBtnDisabled">正在保存</span>
+      </button>
+    </footer>
+  </dialog>
+</div>

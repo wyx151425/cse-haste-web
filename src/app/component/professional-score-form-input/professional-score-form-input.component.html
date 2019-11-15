@@ -1,7 +1,7 @@
 <main class="container">
   <div class="panel">
     <p class="candidate">
-      <span>专业人才考核评价&nbsp;-&nbsp;{{professionalScoreForm.evaluationGroupName}}</span>
+      <span>高级专业人才考核评价&nbsp;-&nbsp;{{professionalScoreForm.evaluationGroupName}}</span>
       <span>受评者：{{professionalScoreForm.evaluateeName}}</span>
     </p>
     <table class="table table-bordered table-reverse table-hover" style="table-layout: fixed">
@@ -132,13 +132,13 @@
       <a routerLink="/user/{{evaluator.userId}}/evaluationScoreForm/list">
         <button class="btn btn-primary" type="button">返回</button>
       </a>
-      <button class="btn btn-primary" type="button" *ngIf="!leaderCadreScoreForm.complete"
+      <button class="btn btn-primary" type="button" *ngIf="!professionalScoreForm.complete"
               (click)="submitProfessionalScoreFormScore()" [disabled]="isSubmitBtnDisabled || isSaveBtnDisabled">
         <span class="icon icon-refresh rotate" *ngIf="isSubmitBtnDisabled"></span>
         <span *ngIf="!isSubmitBtnDisabled">提交</span>
         <span *ngIf="isSubmitBtnDisabled">正在提交</span>
       </button>
-      <button class="btn btn-primary" type="button" *ngIf="!leaderCadreScoreForm.complete"
+      <button class="btn btn-primary" type="button" *ngIf="!professionalScoreForm.complete"
               (click)="saveProfessionalScoreFormScore()" [disabled]="isSaveBtnDisabled || isSubmitBtnDisabled">
         <span class="icon icon-refresh rotate" *ngIf="isSaveBtnDisabled"></span>
         <span *ngIf="!isSaveBtnDisabled">暂存</span>

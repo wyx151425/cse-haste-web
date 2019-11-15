@@ -36,6 +36,13 @@ export class EvaluationGroupService extends HasteService<EvaluationGroup> {
     );
   }
 
+  public updateEvaluationGroupName(evaluationGroup: EvaluationGroup, callback: HasteCallback<EvaluationGroup>): Observable<Response<EvaluationGroup>> {
+    const url = `${this.evaluationGroupsUrl}/name`;
+    return this.httpClient.put<Response<EvaluationGroup>>(url, evaluationGroup).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<EvaluationGroup>>('update evaluation group name')));
+  }
+
   public getEvaluationGroupById(evaluationGroup: EvaluationGroup | number, callback: HasteCallback<EvaluationGroup>): Observable<Response<EvaluationGroup>> {
     const id = typeof evaluationGroup === 'number' ? evaluationGroup : evaluationGroup.id;
     const url = `${this.evaluationGroupsUrl}/${id}`;

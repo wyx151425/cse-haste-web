@@ -7,6 +7,7 @@ import {HasteCallback} from '../model/util/haste-callback';
 import {catchError, tap} from 'rxjs/operators';
 import {Response} from '../model/dto/response';
 import {EvaluationScoreForm} from '../model/evaluation-score-form';
+import {PageInfo} from '../model/util/page-info';
 
 @Injectable({
   providedIn: 'root'
@@ -82,6 +83,20 @@ export class UserService extends HasteService<User | EvaluationScoreForm> {
       tap(response => this.handleResponse(response, callback)),
       catchError(this.handleError<Response<User>>('disable user by id'))
     );
+  }
+
+  public updateUserPassword(user: User, callback: HasteCallback<User>): Observable<Response<User>> {
+    const url = `${this.usersUrl}/password`;
+    return this.httpClient.put<Response<User>>(url, user).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<User>>('update user password')));
+  }
+
+  public getUsers(pageNum: number, callback: HasteCallback<PageInfo<User>>): Observable<Response<PageInfo<User>>> {
+    const url = `${this.usersUrl}?pageNum=${pageNum}`;
+    return this.httpClient.get<Response<PageInfo<User>>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<PageInfo<User>>>('get users')));
   }
 
   public getEvaluationScoreFormsByUser(userId: number, callback: HasteCallback<Array<EvaluationScoreForm>>): Observable<Response<Array<EvaluationScoreForm>>> {

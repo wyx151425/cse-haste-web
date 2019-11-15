@@ -352,6 +352,24 @@ input[type="file"].form-control {
   min-width: 328px;
 }
 
+.form-horizontal-3 {
+
+}
+
+.form-horizontal-3 .form-label {
+  width: 45px;
+  margin-right: 12px;
+}
+
+.form-horizontal-3 .form-control {
+  width: 313px;
+}
+
+.form-horizontal-3 textarea.form-control {
+  max-width: 313px;
+  min-width: 313px;
+}
+
 .form-inline {
   display: block;
 }
@@ -530,7 +548,7 @@ input[type="checkbox"]:checked + .checkbox {
   padding: 40px;
 }
 
-.modal-content p {
+.modal-content > p {
   font-size: 20px;
 }
 
@@ -591,6 +609,63 @@ input[type="checkbox"]:checked + .checkbox {
 
 .popover > .icon {
   padding-right: 4px;
+}
+
+/* 主页头部分的CSS */
+.filter {
+  display: flex;
+  align-items: center;
+}
+
+.filter > .filter-group {
+  position: relative;
+}
+
+.filter > .filter-group > .filter-label {
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.filter > .filter-group > .filter-control {
+  width: 210px;
+  height: 36px;
+  font-size: 14px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border: 1px solid #DCDFE6;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}
+
+.filter > .filter-group > input.filter-control {
+  padding-right: 36px;
+}
+
+.filter > .filter-group > select.filter-control {
+  width: 96px;
+  height: 36px;
+  padding-left: 8px;
+  padding-right: 0;
+}
+
+.filter > .filter-group > .filter-action {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  color: #909399;
+  text-align: center;
+  cursor: pointer;
+}
+
+.filter > .filter-group > .filter-action:hover {
+  color: #286090;
+}
+
+.filter > .filter-group > .filter-action:active {
+  color: #204D74;
 }
 
 /* Rotate部分CSS */
@@ -659,6 +734,10 @@ input[type="checkbox"]:checked + .checkbox {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+  content: "\e003";
 }
 
 .icon-remove:before {

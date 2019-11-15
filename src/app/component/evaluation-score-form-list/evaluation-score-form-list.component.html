@@ -19,9 +19,10 @@
         <td>{{evaluationScoreForm.evaluateeName}}</td>
         <td>{{evaluationScoreForm.evaluatorName}}</td>
         <td>
-          <span *ngIf="100 === evaluationScoreForm.type">领导班子考核评价</span>
-          <span *ngIf="200 === evaluationScoreForm.type">领导干部考核评价</span>
-          <span *ngIf="300 === evaluationScoreForm.type">专业人才考核评价</span>
+          <span *ngIf="100 === evaluationScoreForm.type">领导班子考核评分表</span>
+          <span *ngIf="200 === evaluationScoreForm.type">领导班子成员或中层干部考核评分表</span>
+          <span *ngIf="300 === evaluationScoreForm.type">中层干部(公司领导和考评组)考核评分表</span>
+          <span *ngIf="400 === evaluationScoreForm.type">高级专业人才考核评分表</span>
         </td>
         <td>
           <span *ngIf="!evaluationScoreForm.complete">未完成</span>

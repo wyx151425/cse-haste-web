@@ -32,20 +32,23 @@ import {EvaluationPlanListComponent} from './component/evaluation-plan-list/eval
 import {EvaluationGroupListComponent} from './component/evaluation-group-list/evaluation-group-list.component';
 import {EvaluationScoreFormListComponent} from './component/evaluation-score-form-list/evaluation-score-form-list.component';
 import {EvaluatorScoreFormListComponent} from './component/evaluator-score-form-list/evaluator-score-form-list.component';
-import { EvaluationGroupEvaluateeListComponent } from './component/evaluation-group-evaluatee-list/evaluation-group-evaluatee-list.component';
-import { EvaluationGroupEvaluatorListComponent } from './component/evaluation-group-evaluator-list/evaluation-group-evaluator-list.component';
-import { EvaluationGroupEvaluatorSelectComponent } from './component/evaluation-group-evaluator-select/evaluation-group-evaluator-select.component';
-import { EvaluationGroupEvaluateeSelectComponent } from './component/evaluation-group-evaluatee-select/evaluation-group-evaluatee-select.component';
-import { UserImportModalComponent } from './component/user-import-modal/user-import-modal.component';
-import { EvaluatorScoreFormInputComponent } from './component/evaluator-score-form-input/evaluator-score-form-input.component';
-import { LeadershipScoreFormInputComponent } from './component/leadership-score-form-input/leadership-score-form-input.component';
-import { LeaderCadreScoreFormInputComponent } from './component/leader-cadre-score-form-input/leader-cadre-score-form-input.component';
-import { ProfessionalScoreFormInputComponent } from './component/professional-score-form-input/professional-score-form-input.component';
-import { EvaluatorDeleteModalComponent } from './component/evaluator-delete-modal/evaluator-delete-modal.component';
-import { EvaluateeDeleteModalComponent } from './component/evaluatee-delete-modal/evaluatee-delete-modal.component';
-import { EvaluationPlanEvaluateeListComponent } from './component/evaluation-plan-evaluatee-list/evaluation-plan-evaluatee-list.component';
-import { EvaluationPlanEvaluateeSelectComponent } from './component/evaluation-plan-evaluatee-select/evaluation-plan-evaluatee-select.component';
-import { DepartmentCadreScoreFormInputComponent } from './component/department-cadre-score-form-input/department-cadre-score-form-input.component';
+import {EvaluationGroupEvaluateeListComponent} from './component/evaluation-group-evaluatee-list/evaluation-group-evaluatee-list.component';
+import {EvaluationGroupEvaluatorListComponent} from './component/evaluation-group-evaluator-list/evaluation-group-evaluator-list.component';
+import {EvaluationGroupEvaluatorSelectComponent} from './component/evaluation-group-evaluator-select/evaluation-group-evaluator-select.component';
+import {EvaluationGroupEvaluateeSelectComponent} from './component/evaluation-group-evaluatee-select/evaluation-group-evaluatee-select.component';
+import {UserImportModalComponent} from './component/user-import-modal/user-import-modal.component';
+import {LeadershipScoreFormInputComponent} from './component/leadership-score-form-input/leadership-score-form-input.component';
+import {LeaderCadreScoreFormInputComponent} from './component/leader-cadre-score-form-input/leader-cadre-score-form-input.component';
+import {ProfessionalScoreFormInputComponent} from './component/professional-score-form-input/professional-score-form-input.component';
+import {EvaluatorDeleteModalComponent} from './component/evaluator-delete-modal/evaluator-delete-modal.component';
+import {EvaluateeDeleteModalComponent} from './component/evaluatee-delete-modal/evaluatee-delete-modal.component';
+import {EvaluationPlanEvaluateeListComponent} from './component/evaluation-plan-evaluatee-list/evaluation-plan-evaluatee-list.component';
+import {EvaluationPlanEvaluateeSelectComponent} from './component/evaluation-plan-evaluatee-select/evaluation-plan-evaluatee-select.component';
+import {DepartmentCadreScoreFormInputComponent} from './component/department-cadre-score-form-input/department-cadre-score-form-input.component';
+import { UserManageListComponent } from './component/user-manage-list/user-manage-list.component';
+import { UserPasswordUpdateModalComponent } from './component/user-password-update-modal/user-password-update-modal.component';
+import { EvaluationGroupNameUpdateModalComponent } from './component/evaluation-group-name-update-modal/evaluation-group-name-update-modal.component';
+import { HastePaginationComponent } from './component/haste-pagination/haste-pagination.component';
 
 
 @NgModule({
@@ -71,7 +74,6 @@ import { DepartmentCadreScoreFormInputComponent } from './component/department-c
     EvaluationGroupEvaluatorSelectComponent,
     EvaluationGroupEvaluateeSelectComponent,
     UserImportModalComponent,
-    EvaluatorScoreFormInputComponent,
     LeadershipScoreFormInputComponent,
     LeaderCadreScoreFormInputComponent,
     ProfessionalScoreFormInputComponent,
@@ -79,7 +81,11 @@ import { DepartmentCadreScoreFormInputComponent } from './component/department-c
     EvaluateeDeleteModalComponent,
     EvaluationPlanEvaluateeListComponent,
     EvaluationPlanEvaluateeSelectComponent,
-    DepartmentCadreScoreFormInputComponent
+    DepartmentCadreScoreFormInputComponent,
+    UserManageListComponent,
+    UserPasswordUpdateModalComponent,
+    EvaluationGroupNameUpdateModalComponent,
+    HastePaginationComponent
   ],
   imports: [
     BrowserModule,

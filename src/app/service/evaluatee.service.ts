@@ -53,6 +53,14 @@ export class EvaluateeService extends HasteService<Evaluatee | User> {
     );
   }
 
+  public getNotSelectEvaluateesByEvaluationGroupAndName(evaluationGroupId: number, name: string, callback: HasteCallback<Array<User>>): Observable<Response<Array<User>>> {
+    const url = `${this.evaluationGroupsUrl}/${evaluationGroupId}/notSelectEvaluatees?name=${name}`;
+    return this.httpClient.get<Response<Array<User>>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<Array<User>>>('get not select evaluatees by evaluation group'))
+    );
+  }
+
   public getEvaluateesByEvaluationPlan(evaluationPlanId: number, callback: HasteCallback<Array<Evaluatee>>): Observable<Response<Array<Evaluatee>>> {
     const url = `${this.evaluationPlansUrl}/${evaluationPlanId}/evaluatees`;
     return this.httpClient.get<Response<Array<Evaluatee>>>(url).pipe(
@@ -63,6 +71,14 @@ export class EvaluateeService extends HasteService<Evaluatee | User> {
 
   public getNotSelectEvaluateesByEvaluationPlan(evaluationPlanId: number, callback: HasteCallback<Array<User>>): Observable<Response<Array<User>>> {
     const url = `${this.evaluationPlansUrl}/${evaluationPlanId}/notSelectEvaluatees`;
+    return this.httpClient.get<Response<Array<User>>>(url).pipe(
+      tap(response => this.handleResponse(response, callback)),
+      catchError(this.handleError<Response<Array<User>>>('get not select evaluatees by evaluation plan'))
+    );
+  }
+
+  public getNotSelectEvaluateesByEvaluationPlanAndName(evaluationPlanId: number, name: string, callback: HasteCallback<Array<User>>): Observable<Response<Array<User>>> {
+    const url = `${this.evaluationPlansUrl}/${evaluationPlanId}/notSelectEvaluatees?name=${name}`;
     return this.httpClient.get<Response<Array<User>>>(url).pipe(
       tap(response => this.handleResponse(response, callback)),
       catchError(this.handleError<Response<Array<User>>>('get not select evaluatees by evaluation plan'))
