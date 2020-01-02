@@ -50,6 +50,9 @@
           <button class="btn btn-link" *ngIf="200 == evaluationPlan.stage"
                   (click)="modalService.showSubmitEvaluationPlanModal(evaluationPlan)">提交
           </button>
+          <button class="btn btn-link" *ngIf="300 == evaluationPlan.stage"
+                  (click)="exportEvaluationScoreForms(evaluationPlan)">导出全部
+          </button>
         </td>
       </tr>
       </tbody>

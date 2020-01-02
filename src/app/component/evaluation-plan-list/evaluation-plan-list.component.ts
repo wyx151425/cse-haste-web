@@ -5,6 +5,8 @@ import {EvaluationPlan} from '../../model/evaluation-plan';
 import {ModalService} from '../../service/modal.service';
 import {PromptService} from '../../service/prompt.service';
 import {HasteService} from '../../model/util/haste-service';
+import {HttpResponse} from '@angular/common/http';
+import {EvaluationScoreFormService} from '../../service/evaluation-score-form.service';
 
 @Component({
   selector: 'app-evaluation-plan-list',
@@ -15,7 +17,7 @@ export class EvaluationPlanListComponent implements OnInit {
 
   private evaluationPlans: Array<EvaluationPlan>;
 
-  constructor(private modalService: ModalService, private promptService: PromptService, private route: ActivatedRoute) {
+  constructor(private evaluationScoreFormService: EvaluationScoreFormService, private modalService: ModalService, private promptService: PromptService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -53,5 +55,22 @@ export class EvaluationPlanListComponent implements OnInit {
         return index;
       }
     }
+  }
+
+  private exportEvaluationScoreForms(evaluationPlan: EvaluationPlan): void {
+    this.evaluationScoreFormService.exportEvaluationScoreFormsByEvaluationPlan(evaluationPlan.id).subscribe((response: HttpResponse<any>) => {
+      if (!response) {
+        this.promptService.pushError('导出失败');
+        return;
+      }
+      const url = window.URL.createObjectURL(new Blob([response.body]));
+      const link = document.createElement('a');
+      link.style.display = 'none';
+      link.download = evaluationPlan.name + '.zip';
+      link.href = url;
+
+      document.body.appendChild(link);
+      link.click();
+    });
   }
 }

@@ -41,4 +41,9 @@ export class EvaluationScoreFormService extends HasteService<EvaluationScoreForm
     const url = `${this.evaluationScoreFormsUrl}/export`;
     return this.httpClient.post<HttpResponse<any>>(url, evaluatee, {observe: 'response'});
   }
+
+  public exportEvaluationScoreFormsByEvaluationPlan(evaluationPlanId: number): Observable<HttpResponse<any>> {
+    const url = `/api/evaluationPlans/${evaluationPlanId}/evaluationScoreForms/export`;
+    return this.httpClient.post<HttpResponse<any>>(url, null, {observe: 'response'});
+  }
 }
